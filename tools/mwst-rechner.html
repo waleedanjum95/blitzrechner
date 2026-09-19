@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MwSt Rechner 2026 - Mehrwertsteuer schnell berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Online MwSt Rechner: Berechnen Sie schnell und einfach die Mehrwertsteuer (19% und 7%) brutto aus netto oder netto aus brutto.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-slate-900 border-b border-slate-800 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="../index.html" class="flex items-center gap-2">
+        <span class="text-xl font-extrabold text-white">Blitz<span class="text-sky-500">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-medium text-sky-400 hover:text-sky-300 transition">&larr; Zurück zur Übersicht</a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">MwSt Rechner</h1>
+      <p class="text-slate-400 text-sm md:text-base">Berechnen Sie schnell die Mehrwertsteuer (Brutto & Netto) für Deutschland.</p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl max-w-2xl mx-auto">
+      
+      <!-- Calculation Direction -->
+      <div class="mb-6">
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Berechnungsart</label>
+        <div class="grid grid-cols-2 gap-3">
+          <button id="btnNettoToBrutto" onclick="setMode('netto')" class="py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition">Netto &rarr; Brutto</button>
+          <button id="btnBruttoToNetto" onclick="setMode('brutto')" class="py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">Brutto &rarr; Netto</button>
+        </div>
+      </div>
+
+      <!-- Amount Input -->
+      <div class="mb-6">
+        <label id="inputLabel" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nettobetrag (€)</label>
+        <input type="number" id="amount" placeholder="z. B. 100" oninput="calculate()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-sky-500 transition">
+      </div>
+
+      <!-- Tax Rate Selection -->
+      <div class="mb-6">
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Steuersatz</label>
+        <div class="grid grid-cols-3 gap-3">
+          <button id="rate19" onclick="setRate(19)" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition">19% (Standard)</button>
+          <button id="rate7" onclick="setRate(7)" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">7% (Ermäßigt)</button>
+          <button id="rateCustom" onclick="setRate('custom')" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">Eigenen %</button>
+        </div>
+        <input type="number" id="customRateInput" placeholder="Steuersatz in %" oninput="calculate()" class="hidden w-full mt-3 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:outline-none focus:border-sky-500">
+      </div>
+
+      <!-- Result Card -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400">Nettobetrag:</span>
+          <span id="resNetto" class="font-bold text-white">0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400">Mehrwertsteuer (<span id="resRateLabel">19%</span>):</span>
+          <span id="resMwst" class="font-bold text-sky-400">+ 0,00 €</span>
+        </div>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center text-base">
+          <span class="font-semibold text-slate-200">Bruttobetrag:</span>
+          <span id="resBrutto" class="font-extrabold text-xl text-sky-500">0,00 €</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SEO Content Section -->
+    <section class="mt-12 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed">
+      <h2 class="text-xl font-bold text-white">Wie funktioniert der MwSt Rechner?</h2>
+      <p>Mit diesem Rechner können Sie schnell und einfach den Mehrwertsteuerbetrag sowie Brutto- und Nettobeträge für Deutschland ermitteln.</p>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800">
+          <h3 class="font-semibold text-white mb-1">Standard Steuersatz (19%)</h3>
+          <p class="text-xs text-slate-400">Gilt für die meisten Waren und Dienstleistungen in Deutschland.</p>
+        </div>
+        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800">
+          <h3 class="font-semibold text-white mb-1">Ermäßigter Steuersatz (7%)</h3>
+          <p class="text-xs text-slate-400">Gilt für Lebensmittel, Bücher, Zeitungen und bestimmte Kulturdienstleistungen.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <div class="mb-2 flex justify-center gap-4">
+      <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+      <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+      <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+      <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+    </div>
+    &copy; 2026 BlitzRechner. Alle Rechte vorbehalten.
+  </footer>
+
+  <!-- Calculation JS -->
+  <script>
+    let currentMode = 'netto';
+    let currentRate = 19;
+
+    function setMode(mode) {
+      currentMode = mode;
+      const btnNetto = document.getElementById('btnNettoToBrutto');
+      const btnBrutto = document.getElementById('btnBruttoToNetto');
+      const label = document.getElementById('inputLabel');
+
+      if (mode === 'netto') {
+        btnNetto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
+        btnBrutto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition";
+        label.innerText = "Nettobetrag (€)";
+      } else {
+        btnBrutto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
+        btnNetto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition";
+        label.innerText = "Bruttobetrag (€)";
+      }
+      calculate();
+    }
+
+    function setRate(rate) {
+      currentRate = rate;
+      const r19 = document.getElementById('rate19');
+      const r7 = document.getElementById('rate7');
+      const rCustom = document.getElementById('rateCustom');
+      const customInput = document.getElementById('customRateInput');
+
+      [r19, r7, rCustom].forEach(btn => btn.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition");
+
+      if (rate === 19) {
+        r19.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
+        customInput.classList.add('hidden');
+      } else if (rate === 7) {
+        r7.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
+        customInput.classList.add('hidden');
+      } else {
+        rCustom.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
+        customInput.classList.remove('hidden');
+      }
+      calculate();
+    }
+
+    function calculate() {
+      const inputVal = parseFloat(document.getElementById('amount').value) || 0;
+      let rate = currentRate;
+
+      if (currentRate === 'custom') {
+        rate = parseFloat(document.getElementById('customRateInput').value) || 0;
+      }
+
+      document.getElementById('resRateLabel').innerText = rate + '%';
+
+      let netto = 0, mwst = 0, brutto = 0;
+
+      if (currentMode === 'netto') {
+        netto = inputVal;
+        mwst = netto * (rate / 100);
+        brutto = netto + mwst;
+      } else {
+        brutto = inputVal;
+        netto = brutto / (1 + (rate / 100));
+        mwst = brutto - netto;
+      }
+
+      document.getElementById('resNetto').innerText = netto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resMwst').innerText = '+ ' + mwst.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resBrutto').innerText = brutto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+  </script>
+</body>
+        </html>
+
