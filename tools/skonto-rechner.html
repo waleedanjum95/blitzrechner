@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skonto Rechner 2026 - Skonto & Ersparnis berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Skonto Rechner: Berechnen Sie schnell Skontobeträge, den reduzierten Zahlungsbetrag sowie den effektiven Jahreszins. Inkl. Formeln & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Finanzen & Handel</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Skontorechner</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie schnell den Skontobetrag, den reduzierten Zahlungsbetrag und die Ersparnis bei vorzeitiger Rechnungsausgleichung.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Rechnungsbetrag Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Rechnungsbetrag (Brutto in €)</label>
+        <input type="number" id="invoiceAmount" placeholder="z. B. 1000" oninput="calculateSkonto()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-2xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Skontosatz Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Skontosatz (%)</label>
+        <input type="number" id="skontoRate" value="2" step="0.5" oninput="calculateSkonto()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Rechnungsbetrag:</span>
+          <span id="resInvoice" class="font-bold text-slate-100 text-base">0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Skontobetrag (Ersparnis):</span>
+          <span id="resSkonto" class="font-bold text-sky-400 text-base">- 0,00 €</span>
+        </div>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+          <span class="font-semibold text-slate-300 text-base">Neuer Zahlungsbetrag:</span>
+          <span id="resFinal" class="font-extrabold text-2xl text-sky-400">0,00 €</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Was bedeutet Skonto und wie wird es berechnet?</h2>
+        <p class="mb-3">
+          Unter Skonto versteht man einen Preisnachlass, den Lieferanten ihren Kunden gewähren, wenn diese die Rechnung innerhalb einer bestimmten, sehr kurzen Frist (häufig 7 bis 14 Tage) begleichen. Das Ziel dieser Maßnahme ist es, die Liquidität des Verkäufers zu verbessern und das Ausfallrisiko von Forderungen zu minimieren.
+        </p>
+        <p>
+          Für Käufer lohnt sich das Ausnutzen von Skonto fast immer extrem, da die Zinsersparnis umgerechnet auf das Jahr oft weit über den üblichen Bankkreditzinsen liegt. Mit unserem Skontorechner ermitteln Sie den genauen Nachlass und den verbleibenden Endbetrag in Sekundenschnelle.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die Formeln zur Skontoberechnung</h2>
+        <p class="mb-3">Wenn Sie die Ersparnis manuell ausrechnen möchten, helfen Ihnen folgende Formeln:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl space-y-2 font-mono text-xs overflow-x-auto mb-4">
+          <p><strong class="text-sky-400">Skontobetrag:</strong> Betrag = Rechnungsbetrag × (Skontosatz / 100)</p>
+          <p><strong class="text-sky-400">Zahlungsbetrag:</strong> Endbetrag = Rechnungsbetrag - Skontobetrag</p>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Warum lohnt sich Skonto so stark?</h2>
+        <p class="mb-3">
+          Wird beispielsweise ein Skonto von 2 % bei einem Zahlungsziel von 30 Tagen statt sofort gewährt, entspricht dies bei Nichtnutzung hochgerechnet auf das Jahr einem effektiven Zinssatz von über 37 %. Daher sollten Unternehmen Skontoabzüge – wenn finanziell möglich – immer beanspruchen.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wird Skonto vom Brutto- oder Nettobetrag gerechnet?</h3>
+            <p class="text-slate-500 text-xs">
+              Skonto wird grundsätzlich vom Bruttorechnungsbetrag (inklusive Mehrwertsteuer) abgezogen, da der gesamte Endbetrag vorzeitig beglichen wird.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Was passiert, wenn man trotz Fristüberschreitung Skonto abzieht?</h3>
+            <p class="text-slate-500 text-xs">
+              Zahlt der Kunde nach Ablauf der Skontofrist und kürzt den Betrag eigenmächtig, ist der Lieferant berechtigt, den fehlenden Betrag nachzufordern.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    function calculateSkonto() {
+      const amount = parseFloat(document.getElementById('invoiceAmount').value) || 0;
+      const rate = parseFloat(document.getElementById('skontoRate').value) || 0;
+
+      const skontoAmount = amount * (rate / 100);
+      const finalAmount = amount - skontoAmount;
+
+      document.getElementById('resInvoice').innerText = amount.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resSkonto').innerText = '- ' + skontoAmount.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resFinal').innerText = finalAmount.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+  </script>
+</body>
+    </html>
+    
