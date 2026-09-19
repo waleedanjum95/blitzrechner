@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zinseszins Rechner 2026 - Kapitalwachstum berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Zinseszins Rechner: Berechnen Sie Ihr Vermögenswachstum durch Zinsen und Zinseszinsen über mehrere Jahre. Inkl. Formeln & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Finanzen & Geldanlage</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Zinseszinsrechner</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie das langfristige Wachstum Ihres Kapakels durch den Zinseszinseffekt über mehrere Jahre.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Startkapital Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Startkapital (€)</label>
+        <input type="number" id="startCapital" value="5000" oninput="calculateCompound()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-2xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Zinssatz Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Zinssatz pro Jahr (%)</label>
+        <input type="number" id="interestRate" value="4.5" step="0.1" oninput="calculateCompound()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Anlagezeitraum Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Anlagezeitraum (Jahre)</label>
+        <input type="number" id="years" value="10" step="1" oninput="calculateCompound()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Startkapital:</span>
+          <span id="resStart" class="font-bold text-slate-100 text-base">0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Zinsertrag gesamt:</span>
+          <span id="resInterest" class="font-bold text-sky-400 text-base">+ 0,00 €</span>
+        </div>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+          <span class="font-semibold text-slate-300 text-base">Endkapital:</span>
+          <span id="resFinal" class="font-extrabold text-2xl text-sky-400">0,00 €</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Was ist der Zinseszinseffekt?</h2>
+        <p class="mb-3">
+          Albert Einstein soll den Zinseszinseffekt scherzhaft als das achte Weltwunder bezeichnet haben. Unter Zinseszinsen versteht man Zinsen, die auf bereits erwirtschaftete Zinsen aus den Vorjahren gezahlt werden. Dadurch beschleunigt sich das Vermögenswachstum mit der Zeit massiv und verläuft exponentiell statt linear.
+        </p>
+        <p>
+          Wer langfristig Geld anlegt, profitiert über Jahre hinweg überproportional von diesem Effekt. Unser kostenloser Zinseszinsrechner zeigt Ihnen exakt, wie sich Ihr Startkapital bei einem bestimmten Zinssatz über die Jahre entwickelt.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die mathematische Zinseszinsformel</h2>
+        <p class="mb-3">Die Berechnung des Endkapitals unter Berücksichtigung von Zinseszinsen erfolgt nach folgender Formel:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl space-y-2 font-mono text-xs overflow-x-auto mb-4">
+          <p><strong class="text-sky-400">Formel:</strong> Endkapital = Startkapital × (1 + Zinssatz / 100)ⁿ</p>
+          <p class="text-slate-400">*(n = Anzahl der Jahre)*</p>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Warum ist ein früher Start wichtig?</h2>
+        <p class="mb-3">
+          Da der Zinseszinseffekt vor allem in den späteren Jahren seine volle Kraft entfaltet, zahlt sich ein frühzeitiger Beginn der Geldanlage enorm aus. Schon wenige Jahre Unterschied zu Beginn können über die gesamte Laufzeit einen riesigen Unterschied im Endkapital ausmachen.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Muss man Zinsen auf Erträge versteuern?</h3>
+            <p class="text-slate-500 text-xs">
+              In Deutschland unterliegen Kapitalerträge grundsätzlich der Abgeltungsteuer in Höhe von 25 % zuzüglich Solidaritätszuschlag und gegebenenfalls Kirchensteuer (sofern der Sparerpauschbetrag überschritten wird).
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wie unterscheidet sich einfacher Zins vom Zinseszins?</h3>
+            <p class="text-slate-500 text-xs">
+              Beim einfachen Zins werden Zinsen nur auf das ursprüngliche Startkapital gezahlt. Beim Zinseszins werden die jährlichen Zinsen dem Anlagekapital hinzugefügt, sodass im Folgejahr auch auf die Zinsen weitere Zinsen erwirtschaftet werden.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    function calculateCompound() {
+      const p = parseFloat(document.getElementById('startCapital').value) || 0;
+      const r = parseFloat(document.getElementById('interestRate').value) || 0;
+      const t = parseFloat(document.getElementById('years').value) || 0;
+
+      const finalAmount = p * Math.pow((1 + (r / 100)), t);
+      const interestEarned = finalAmount - p;
+
+      document.getElementById('resStart').innerText = p.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resInterest').innerText = '+ ' + interestEarned.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resFinal').innerText = finalAmount.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+
+    // Run initial calculation on load
+    calculateCompound();
+  </script>
+</body>
+  </html>
+  
