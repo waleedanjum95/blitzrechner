@@ -3,128 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MwSt Rechner 2026 - Mehrwertsteuer schnell berechnen | BlitzRechner</title>
-  <meta name="description" content="Kostenloser Online MwSt Rechner: Berechnen Sie schnell und einfach die Mehrwertsteuer (19% und 7%) brutto aus netto oder netto aus brutto.">
+  <title>MwSt Rechner 2026 - Mehrwertsteuer einfach berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Online MwSt Rechner für Deutschland. Berechnen Sie schnell und präzise die Mehrwertsteuer (19% & 7%), Nettobeträge und Bruttobeträge inkl. Formeln & FAQs.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
-  <header class="bg-slate-900 border-b border-slate-800 py-4 px-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="../index.html" class="flex items-center gap-2">
-        <span class="text-xl font-extrabold text-white">Blitz<span class="text-sky-500">Rechner</span></span>
+  <!-- Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
       </a>
-      <a href="../index.html" class="text-sm font-medium text-sky-400 hover:text-sky-300 transition">&larr; Zurück zur Übersicht</a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
     </div>
   </header>
 
-  <!-- Main Calculator Content -->
+  <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title & Badge -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">MwSt Rechner</h1>
-      <p class="text-slate-400 text-sm md:text-base">Berechnen Sie schnell die Mehrwertsteuer (Brutto & Netto) für Deutschland.</p>
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Finanzen & Steuern</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Mehrwertsteuer Rechner (Deutschland)</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie schnell, präzise und kostenlos die MwSt (19% und 7%) sowie Brutto- und Nettobeträge.</p>
     </div>
 
-    <!-- Calculator Card -->
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl max-w-2xl mx-auto">
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
       
-      <!-- Calculation Direction -->
+      <!-- Direction Toggle -->
       <div class="mb-6">
-        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Berechnungsart</label>
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Berechnungsart wählen</label>
         <div class="grid grid-cols-2 gap-3">
-          <button id="btnNettoToBrutto" onclick="setMode('netto')" class="py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition">Netto &rarr; Brutto</button>
-          <button id="btnBruttoToNetto" onclick="setMode('brutto')" class="py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">Brutto &rarr; Netto</button>
+          <button id="btnNetto" onclick="setMode('netto')" class="py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition">Netto &rarr; Brutto (+ MwSt)</button>
+          <button id="btnBrutto" onclick="setMode('brutto')" class="py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Brutto &rarr; Netto (- MwSt)</button>
         </div>
       </div>
 
       <!-- Amount Input -->
       <div class="mb-6">
-        <label id="inputLabel" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nettobetrag (€)</label>
-        <input type="number" id="amount" placeholder="z. B. 100" oninput="calculate()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-lg focus:outline-none focus:border-sky-500 transition">
+        <label id="inputLabel" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nettobetrag in Euro (€)</label>
+        <input type="number" id="amount" placeholder="z. B. 100,00" oninput="calculate()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-2xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
       </div>
 
-      <!-- Tax Rate Selection -->
+      <!-- Tax Rate Buttons -->
       <div class="mb-6">
-        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Steuersatz</label>
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Mehrwertsteuersatz</label>
         <div class="grid grid-cols-3 gap-3">
-          <button id="rate19" onclick="setRate(19)" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition">19% (Standard)</button>
-          <button id="rate7" onclick="setRate(7)" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">7% (Ermäßigt)</button>
-          <button id="rateCustom" onclick="setRate('custom')" class="py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition">Eigenen %</button>
+          <button id="rate19" onclick="setRate(19)" class="py-2.5 px-3 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition">19% (Standard)</button>
+          <button id="rate7" onclick="setRate(7)" class="py-2.5 px-3 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition">7% (Ermäßigt)</button>
+          <button id="rateCustom" onclick="setRate('custom')" class="py-2.5 px-3 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Eigener Satz</button>
         </div>
-        <input type="number" id="customRateInput" placeholder="Steuersatz in %" oninput="calculate()" class="hidden w-full mt-3 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-white text-sm focus:outline-none focus:border-sky-500">
+        <input type="number" id="customRateInput" placeholder="Steuersatz eingeben (z. B. 10)" oninput="calculate()" class="hidden w-full mt-3 bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
       </div>
 
-      <!-- Result Card -->
-      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
         <div class="flex justify-between items-center text-sm">
-          <span class="text-slate-400">Nettobetrag:</span>
-          <span id="resNetto" class="font-bold text-white">0,00 €</span>
+          <span class="text-slate-400 font-medium">Nettobetrag:</span>
+          <span id="resNetto" class="font-bold text-slate-100 text-base">0,00 €</span>
         </div>
         <div class="flex justify-between items-center text-sm">
-          <span class="text-slate-400">Mehrwertsteuer (<span id="resRateLabel">19%</span>):</span>
-          <span id="resMwst" class="font-bold text-sky-400">+ 0,00 €</span>
+          <span class="text-slate-400 font-medium">Mehrwertsteuer (<span id="resRateLabel">19%</span>):</span>
+          <span id="resMwst" class="font-bold text-sky-400 text-base">+ 0,00 €</span>
         </div>
-        <div class="border-t border-slate-800 pt-3 flex justify-between items-center text-base">
-          <span class="font-semibold text-slate-200">Bruttobetrag:</span>
-          <span id="resBrutto" class="font-extrabold text-xl text-sky-500">0,00 €</span>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+          <span class="font-semibold text-slate-300 text-base">Bruttobetrag (Endpreis):</span>
+          <span id="resBrutto" class="font-extrabold text-2xl text-sky-400">0,00 €</span>
         </div>
       </div>
 
     </div>
 
-    <!-- SEO Content Section -->
-    <section class="mt-12 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6 text-slate-300 text-sm leading-relaxed">
-      <h2 class="text-xl font-bold text-white">Wie funktioniert der MwSt Rechner?</h2>
-      <p>Mit diesem Rechner können Sie schnell und einfach den Mehrwertsteuerbetrag sowie Brutto- und Nettobeträge für Deutschland ermitteln.</p>
+    <!-- 300+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm">
       
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800">
-          <h3 class="font-semibold text-white mb-1">Standard Steuersatz (19%)</h3>
-          <p class="text-xs text-slate-400">Gilt für die meisten Waren und Dienstleistungen in Deutschland.</p>
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wie funktioniert der Online MwSt Rechner?</h2>
+        <p class="mb-3">
+          Unser kostenloser Mehrwertsteuer-Rechner ermöglicht Ihnen die einfache und blitzschnelle Berechnung der Umsatztsteuer für Deutschland, Österreich und die Schweiz. Egal ob Sie als Unternehmer eine Ausgangsrechnung erstellen, als Freiberufler Nettobeträge ermitteln oder als Verbraucher den enthaltenen Steueranteil eines Einkaufs prüfen möchten.
+        </p>
+        <p>
+          Sie können flexibel zwischen zwei Berechnungsarten wählen: Dem Aufschlagen der Mehrwertsteuer auf einen Nettobetrag (Netto zu Brutto) oder dem Herausrechnen der Steuer aus einem Bruttobetrag (Brutto zu Netto).
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die Steuersätze in Deutschland im Überblick</h2>
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">19% Regelsatz (Standard)</h3>
+            <p class="text-xs text-slate-500">
+              Gilt grundsätzlich für fast alle Waren, elektronischen Geräte, Bekleidung, Dienstleistungen sowie handwerkliche Tätigkeiten in Deutschland.
+            </p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">7% Ermäßigter Steuersatz</h3>
+            <p class="text-xs text-slate-500">
+              Gilt für Güter des täglichen Bedarfs: Grundnahrungsmittel, Bücher, Zeitungen, Kunstgegenstände, Nahverkehrstickets und Hotelübernachtungen.
+            </p>
+          </div>
         </div>
-        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-800">
-          <h3 class="font-semibold text-white mb-1">Ermäßigter Steuersatz (7%)</h3>
-          <p class="text-xs text-slate-400">Gilt für Lebensmittel, Bücher, Zeitungen und bestimmte Kulturdienstleistungen.</p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Mathematische Formeln zur MwSt-Berechnung</h2>
+        <p class="mb-3">Falls Sie die Umsatztsteuer manuell berechnen möchten, gelten folgende mathematische Formeln:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl space-y-2 font-mono text-xs overflow-x-auto mb-4">
+          <p><strong class="text-sky-400">Netto zu Brutto:</strong> Brutto = Netto × (1 + (Steuersatz / 100))</p>
+          <p><strong class="text-sky-400">MwSt-Betrag:</strong> MwSt = Netto × (Steuersatz / 100)</p>
+          <p><strong class="text-sky-400">Brutto zu Netto:</strong> Netto = Brutto / (1 + (Steuersatz / 100))</p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Was ist der Unterschied zwischen Mehrwertsteuer und Umsatzsteuer?</h3>
+            <p class="text-slate-500 text-xs">
+              Es gibt rechtlich keinen Unterschied. "Umsatzsteuer" ist der offizielle Begriff des Finanzamts, während im allgemeinen Sprachgebrauch und Endverbrauchermarkt meist von "Mehrwertsteuer" (MwSt) gesprochen wird.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wie rechnet man 19% MwSt aus dem Bruttobetrag heraus?</h3>
+            <p class="text-slate-500 text-xs">
+              Teilen Sie den Bruttobetrag durch 1,19. Das Ergebnis ist der Nettobetrag. Ziehen Sie diesen Nettobetrag vom Bruttobetrag ab, erhalten Sie den exakten Mehrwertsteuerbetrag.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-    <div class="mb-2 flex justify-center gap-4">
-      <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
-      <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
-      <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
-      <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
     </div>
-    &copy; 2026 BlitzRechner. Alle Rechte vorbehalten.
   </footer>
 
-  <!-- Calculation JS -->
+  <!-- Script Code -->
   <script>
     let currentMode = 'netto';
     let currentRate = 19;
 
     function setMode(mode) {
       currentMode = mode;
-      const btnNetto = document.getElementById('btnNettoToBrutto');
-      const btnBrutto = document.getElementById('btnBruttoToNetto');
-      const label = document.getElementById('inputLabel');
+      const bN = document.getElementById('btnNetto');
+      const bB = document.getElementById('btnBrutto');
+      const lbl = document.getElementById('inputLabel');
 
-      if (mode === 'netto') {
-        btnNetto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
-        btnBrutto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition";
-        label.innerText = "Nettobetrag (€)";
+      if(mode === 'netto') {
+        bN.className = "py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        bB.className = "py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+        lbl.innerText = "Nettobetrag in Euro (€)";
       } else {
-        btnBrutto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
-        btnNetto.className = "py-3 px-4 rounded-xl font-medium text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition";
-        label.innerText = "Bruttobetrag (€)";
+        bB.className = "py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        bN.className = "py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+        lbl.innerText = "Bruttobetrag in Euro (€)";
       }
       calculate();
     }
@@ -133,42 +194,37 @@
       currentRate = rate;
       const r19 = document.getElementById('rate19');
       const r7 = document.getElementById('rate7');
-      const rCustom = document.getElementById('rateCustom');
-      const customInput = document.getElementById('customRateInput');
+      const rC = document.getElementById('rateCustom');
+      const cInp = document.getElementById('customRateInput');
 
-      [r19, r7, rCustom].forEach(btn => btn.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-800 transition");
+      [r19, r7, rC].forEach(b => b.className = "py-2.5 px-3 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition");
 
       if (rate === 19) {
-        r19.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
-        customInput.classList.add('hidden');
+        r19.className = "py-2.5 px-3 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        cInp.classList.add('hidden');
       } else if (rate === 7) {
-        r7.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
-        customInput.classList.add('hidden');
+        r7.className = "py-2.5 px-3 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        cInp.classList.add('hidden');
       } else {
-        rCustom.className = "py-2.5 px-3 rounded-xl font-semibold text-sm border border-sky-500 bg-sky-500/10 text-sky-400 transition";
-        customInput.classList.remove('hidden');
+        rC.className = "py-2.5 px-3 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        cInp.classList.remove('hidden');
       }
       calculate();
     }
 
     function calculate() {
-      const inputVal = parseFloat(document.getElementById('amount').value) || 0;
-      let rate = currentRate;
-
-      if (currentRate === 'custom') {
-        rate = parseFloat(document.getElementById('customRateInput').value) || 0;
-      }
+      const val = parseFloat(document.getElementById('amount').value) || 0;
+      let rate = currentRate === 'custom' ? (parseFloat(document.getElementById('customRateInput').value) || 0) : currentRate;
 
       document.getElementById('resRateLabel').innerText = rate + '%';
 
       let netto = 0, mwst = 0, brutto = 0;
-
       if (currentMode === 'netto') {
-        netto = inputVal;
+        netto = val;
         mwst = netto * (rate / 100);
         brutto = netto + mwst;
       } else {
-        brutto = inputVal;
+        brutto = val;
         netto = brutto / (1 + (rate / 100));
         mwst = brutto - netto;
       }
@@ -179,5 +235,11 @@
     }
   </script>
 </body>
-        </html>
-
+</html>
+      document.getElementById('resNetto').innerText = netto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resMwst').innerText = '+ ' + mwst.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resBrutto').innerText = brutto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+  </script>
+</body>
+</html>
