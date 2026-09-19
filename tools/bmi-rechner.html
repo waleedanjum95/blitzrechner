@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Rechner 2026 - Body-Mass-Index berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser BMI Rechner für Damen und Herren: Berechnen Sie Ihren Body-Mass-Index nach WHO-Richtlinien inkl. Idealgewicht, Formeln & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold uppercase tracking-wider">Gesundheit & Fitness</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">BMI Rechner (Body-Mass-Index)</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie Ihren Body-Mass-Index schnell und erfahren Sie, ob Ihr Gewicht im Normalbereich liegt.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Gender Selection -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Geschlecht</label>
+        <div class="grid grid-cols-2 gap-3">
+          <button id="btnMale" onclick="setGender('male')" class="py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition">Männlich</button>
+          <button id="btnFemale" onclick="setGender('female')" class="py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Weiblich</button>
+        </div>
+      </div>
+
+      <!-- Height Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Körpergröße (in cm)</label>
+        <input type="number" id="heightInput" placeholder="z. B. 175" oninput="calculateBMI()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Weight Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Körpergewicht (in kg)</label>
+        <input type="number" id="weightInput" placeholder="z. B. 70" oninput="calculateBMI()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Age Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Alter (Jahre)</label>
+        <input type="number" id="ageInput" placeholder="z. B. 30" oninput="calculateBMI()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-base focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Ihr BMI-Wert:</span>
+          <span id="resBmi" class="font-extrabold text-2xl text-sky-400">0.0</span>
+        </div>
+        <div class="flex justify-between items-center text-sm border-t border-slate-800 pt-3">
+          <span class="text-slate-400 font-medium">Kategorie:</span>
+          <span id="resCategory" class="font-bold text-slate-100 text-base">Bitte Daten eingeben</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Was ist der Body-Mass-Index (BMI)?</h2>
+        <p class="mb-3">
+          Der Body-Mass-Index ist eine international anerkannte Maßeinheit zur Beurteilung des Körpergewichts im Verhältnis zur Körpergröße. Er wurde im 19. Jahrhundert entwickelt und wird heute von Medizinern, Ernährungswissenschaftlern und der Weltgesundheitsorganisation (WHO) herangezogen, um das individuelle Risiko für gewichtsbedingte Erkrankungen abzuschätzen.
+        </p>
+        <p>
+          Obwohl der BMI ein nützlicher Richtwert für Erwachsene ist, unterscheidet er nicht zwischen Fett- und Muskelgewebe. Daher kann er bei Leistungssportlern oder sehr muskulösen Menschen zu abweichenden Beurteilungen führen.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">WHO-Klassifikation für den BMI</h2>
+        <div class="space-y-2 my-4">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-between text-xs">
+            <span class="font-bold text-slate-900">Untergewicht</span>
+            <span class="text-slate-500">BMI unter 18,5</span>
+          </div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 flex justify-between text-xs">
+            <span class="font-bold text-emerald-800">Normalgewicht (Idealbereich)</span>
+            <span class="text-emerald-700">BMI 18,5 – 24,9</span>
+          </div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 flex justify-between text-xs">
+            <span class="font-bold text-amber-800">Übergewicht (Präadipositas)</span>
+            <span class="text-amber-700">BMI 25,0 – 29,9</span>
+          </div>
+          <div class="bg-rose-50 p-3 rounded-xl border border-rose-200 flex justify-between text-xs">
+            <span class="font-bold text-rose-800">Adipositas (Starkes Übergewicht)</span>
+            <span class="text-rose-700">BMI über 30,0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die mathematische BMI-Formel</h2>
+        <p class="mb-3">Zur manuellen Berechnung wird das Körpergewicht durch das Quadrat der Körpergröße in Metern geteilt:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl font-mono text-xs text-center">
+          BMI = Körpergewicht (kg) / [Körpergröße (m)]²
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Gilt derselbe BMI für Männer und Frauen?</h3>
+            <p class="text-slate-500 text-xs">
+              Die offiziellen WHO-Grenzwerte gelten gleichermaßen für beide Geschlechter. Allerdings haben Frauen aufgrund ihrer biologischen Veranlagung von Natur aus einen etwas höheren Körperfettanteil.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Ist der BMI auch für Kinder und Jugendliche geeignet?</h3>
+            <p class="text-slate-500 text-xs">
+              Nein, bei Kindern und Jugendlichen im Wachstumsalter müssen alters- und geschlechtsspezifische Perzentilenkurven herangezogen werden, da sich Körperbau und Fettanteil permanent verändern.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    let currentGender = 'male';
+
+    function setGender(gender) {
+      currentGender = gender;
+      const bM = document.getElementById('btnMale');
+      const bF = document.getElementById('btnFemale');
+
+      if (gender === 'male') {
+        bM.className = "py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        bF.className = "py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      } else {
+        bF.className = "py-3 px-4 rounded-xl font-bold text-sm bg-sky-600 text-white shadow-sm transition";
+        bM.className = "py-3 px-4 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      }
+      calculateBMI();
+    }
+
+    function calculateBMI() {
+      const heightCm = parseFloat(document.getElementById('heightInput').value) || 0;
+      const weightKg = parseFloat(document.getElementById('weightInput').value) || 0;
+
+      if (heightCm <= 0 || weightKg <= 0) {
+        document.getElementById('resBmi').innerText = '0.0';
+        document.getElementById('resCategory').innerText = 'Bitte Daten eingeben';
+        document.getElementById('resCategory').className = 'font-bold text-slate-100 text-base';
+        return;
+      }
+
+      const heightM = heightCm / 100;
+      const bmi = weightKg / (heightM * heightM);
+
+      document.getElementById('resBmi').innerText = bmi.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+      let category = '';
+      let colorClass = 'font-bold text-base ';
+
+      if (bmi < 18.5) {
+        category = 'Untergewicht';
+        colorClass += 'text-amber-400';
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        category = 'Normalgewicht (Ideal)';
+        colorClass += 'text-emerald-400';
+      } else if (bmi >= 25.0 && bmi <= 29.9) {
+        category = 'Übergewicht (Präadipositas)';
+        colorClass += 'text-amber-400';
+      } else {
+        category = 'Adipositas (Starkes Übergewicht)';
+        colorClass += 'text-rose-400';
+      }
+
+      const catElement = document.getElementById('resCategory');
+      catElement.innerText = category;
+      catElement.className = colorClass;
+    }
+  </script>
+</body>
+    </html>
+    
