@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spritverbrauch Rechner 2026 - Benzinkosten & Verbrauch berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Spritverbrauch Rechner: Berechnen Sie schnell den Durchschnittsverbrauch (l/100km) und die Benzinkosten für Ihre Fahrt oder Reise. Inkl. Tipps & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Auto & Alltag</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Spritverbrauch Rechner</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie unkompliziert den Kraftstoffverbrauch auf 100 Kilometer und die anfallenden Benzinkosten.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Gefahrene Strecke Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Gefahrene Strecke (in km)</label>
+        <input type="number" id="distance" value="500" placeholder="z. B. 500" oninput="calculateFuel()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Getankte Liter Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Getankte Kraftstoffmenge (in Litern)</label>
+        <input type="number" id="liters" value="35" step="0.1" placeholder="z. B. 35" oninput="calculateFuel()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Kraftstoffpreis Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Kraftstoffpreis pro Liter (in €)</label>
+        <input type="number" id="pricePerLiter" value="1.75" step="0.01" placeholder="z. B. 1.75" oninput="calculateFuel()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Durchschnittsverbrauch:</span>
+          <span id="resConsumption" class="font-extrabold text-xl text-sky-400">0,0 l / 100 km</span>
+        </div>
+        <div class="flex justify-between items-center text-sm border-t border-slate-800 pt-3">
+          <span class="text-slate-400 font-medium">Kosten pro 100 Kilometer:</span>
+          <span id="resCostPer100" class="font-bold text-emerald-400 text-base">0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm border-t border-slate-800 pt-3">
+          <span class="font-semibold text-slate-300 text-base">Gesamtkosten für Strecke:</span>
+          <span id="resTotalCost" class="font-extrabold text-2xl text-sky-400">0,00 €</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wie berechnet man den Spritverbrauch richtig?</h2>
+        <p class="mb-3">
+          Steigende Kraftstoffpreise an den Tankstellen machen es immer wichtiger, den genauen Spritverbrauch des eigenen Autos im Blick zu behalten. Wer den Kraftstoffverbrauch regelmäßig kontrolliert, erkennt technische Defekte, abgefahrene Reifen oder einen ineffizienten Fahrstil frühzeitig.
+        </p>
+        <p>
+          Unser kostenloser Spritrechner ermittelt anhand der gefahrenen Kilometer und der getankten Liter vollautomatisch den Durchschnittsverbrauch auf 100 Kilometer sowie die exakten Fahrtkosten.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die Formel für den Kraftstoffverbrauch</h2>
+        <p class="mb-3">Um den Verbrauch manuell zu ermitteln, nutzen Sie die gängige mathematische Formel:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl space-y-2 font-mono text-xs overflow-x-auto mb-4">
+          <p><strong class="text-sky-400">Verbrauch (l/100km):</strong> (Getankte Liter × 100) / Gefahrene Kilometer</p>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Tipps zum Kraftstoff sparen</h2>
+        <p class="mb-3">
+          Schon kleine Anpassungen im Fahrverhalten können den Spritverbrauch spürbar senken. Dazu gehören vorausschauendes Fahren, frühes Hochschalten (niedrigeren Drehzahlbereich nutzen), das Vermeiden von unnötigem Ballast im Kofferraum sowie die Kontrolle des Reifendrucks.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wie ermittle ich den Verbrauch beim Volltanken am besten?</h3>
+            <p class="text-slate-500 text-xs">
+              Tanken Sie das Auto voll und setzen Sie den Tageskilometerzähler auf Null. Beim nächsten Tanken tanken Sie wieder voll. Die getankte Menge und die gefahrenen Kilometer auf dem Tageszähler sind die perfekten Werte für die Berechnung.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Warum weicht der Bordcomputer oft vom tatsächlichen Verbrauch ab?</h3>
+            <p class="text-slate-500 text-xs">
+              Der Bordcomputer errechnet den Verbrauch meist über Einspritzmengen-Sensoren, was zu leichten Toleranzen führen kann. Die Tankstellen-Methode (getankte Liter zu gefahrenen Kilometern) liefert stets das exakteste Ergebnis.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    function calculateFuel() {
+      const distance = parseFloat(document.getElementById('distance').value) || 0;
+      const liters = parseFloat(document.getElementById('liters').value) || 0;
+      const price = parseFloat(document.getElementById('pricePerLiter').value) || 0;
+
+      if (distance <= 0 || liters <= 0) {
+        document.getElementById('resConsumption').innerText = '0,0 l / 100 km';
+        document.getElementById('resCostPer100').innerText = '0,00 €';
+        document.getElementById('resTotalCost').innerText = '0,00 €';
+        return;
+      }
+
+      const consumption = (liters * 100) / distance;
+      const costPer100 = consumption * price;
+      const totalCost = liters * price;
+
+      document.getElementById('resConsumption').innerText = consumption.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' l / 100 km';
+      document.getElementById('resCostPer100').innerText = costPer100.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resTotalCost').innerText = totalCost.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+
+    // Run calculation on load
+    calculateFuel();
+  </script>
+</body>
+  </html>
+  
