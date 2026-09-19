@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wörter Zählen 2026 - Textanalyse & Wortzähler | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Online Wortzähler: Zählen Sie Wörter, Zeichen mit und ohne Leerzeichen, Sätze und Absätze in Echtzeit. Inkl. SEO-Tipps & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Text & Schreib-Tools</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Wörter Zählen & Textanalyse</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Zählen Sie Wörter, Zeichen, Sätze und Absätze in Echtzeit direkt im Browser.</p>
+    </div>
+
+    <!-- Interactive Tool Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Text Area Input -->
+      <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Ihr Text</label>
+          <button onclick="clearText()" class="text-xs font-semibold text-rose-500 hover:text-rose-700 transition">Text löschen</button>
+        </div>
+        <textarea id="textInput" rows="7" placeholder="Geben Sie hier Ihren Text ein oder fügen Sie ihn ein..." oninput="analyzeText()" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-4 text-slate-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-sky-500 transition resize-y"></textarea>
+      </div>
+
+      <!-- Result Panel / Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-slate-900 text-white rounded-xl p-4 text-center shadow-inner">
+          <div class="text-slate-400 text-xs font-medium mb-1">Wörter</div>
+          <div id="wordCount" class="font-extrabold text-2xl text-sky-400">0</div>
+        </div>
+        <div class="bg-slate-900 text-white rounded-xl p-4 text-center shadow-inner">
+          <div class="text-slate-400 text-xs font-medium mb-1">Zeichen (m. L.)</div>
+          <div id="charCountWithSpace" class="font-extrabold text-2xl text-emerald-400">0</div>
+        </div>
+        <div class="bg-slate-900 text-white rounded-xl p-4 text-center shadow-inner">
+          <div class="text-slate-400 text-xs font-medium mb-1">Zeichen (o. L.)</div>
+          <div id="charCountWithoutSpace" class="font-extrabold text-2xl text-amber-400">0</div>
+        </div>
+        <div class="bg-slate-900 text-white rounded-xl p-4 text-center shadow-inner">
+          <div class="text-slate-400 text-xs font-medium mb-1">Sätze</div>
+          <div id="sentenceCount" class="font-extrabold text-2xl text-purple-400">0</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Warum ein Online Wortzähler unverzichtbar ist</h2>
+        <p class="mb-3">
+          Ob beim Verfassen einer wissenschaftlichen Arbeit (Bachelorarbeit, Masterarbeit), beim Schreiben von Blogbeiträgen für das Content-Marketing oder beim Einhalten strenger Zeichenlimits für Social-Media-Posts: Die genaue Anzahl von Wörtern und Zeichen zu kennen ist essenziell. 
+        </p>
+        <p>
+          Unser kostenloser Online-Wortzähler analysiert Ihren Text vollautomatisch in Echtzeit. Ohne lästiges Klicken oder Neuladen der Seite sehen Sie sofort, wie viele Wörter, Buchstaben, Sätze und Absätze Ihr Dokument enthält.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wichtige Limits für Texte im Netz</h2>
+        <p class="mb-3">Verschiedene Plattformen und Textformate stellen unterschiedliche Anforderungen an die Länge:</p>
+        
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">SEO & Blogartikel</h3>
+            <p class="text-xs text-slate-500">Für eine gute Google-Platzierung sollten informative Fachartikel mindestens 300 bis über 1000 Wörter umfassen.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Social Media Limits</h3>
+            <p class="text-xs text-slate-500">Kurznachrichten oder Werbeanzeigen sind oft auf exakte Zeichenanzahlen (z.B. max. 280 Zeichen) limitiert.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wie werden Wörter und Sätze gezählt?</h2>
+        <p class="mb-3">
+          Die Zählung basiert auf standardisierten Trennzeichen wie Leerzeichen, Zeilenumbrüchen und Satzzeichen (wie Punkten, Ausrufe- oder Fragezeichen), um Wörter und Sätze präzise voneinander zu unterscheiden.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Werden meine eingegebenen Texte gespeichert?</h3>
+            <p class="text-slate-500 text-xs">
+              Nein, die gesamte Textanalyse findet ausschließlich direkt in Ihrem Browser statt. Ihre persönlichen oder geschäftlichen Daten werden zu keinem Zeitpunkt an Server übermittelt oder gespeichert.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Was ist der Unterschied zwischen Zeichen mit und ohne Leerzeichen?</h3>
+            <p class="text-slate-500 text-xs">
+              Bei der Zählung mit Leerzeichen werden alle Buchstaben, Zahlen, Satzzeichen und auch die Zwischenräume (Spaces) gewertet. Ohne Leerzeichen werden rein die reinen Textzeichen gezählt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Text Analysis Script -->
+  <script>
+    function analyzeText() {
+      const text = document.getElementById('textInput').value;
+
+      // Characters with and without space
+      const charWithSpace = text.length;
+      const charWithoutSpace = text.replace(/\s/g, '').length;
+
+      // Words count (handling multiple spaces and empty strings)
+      const wordsArray = text.trim() === '' ? [] : text.trim().split(/\s+/);
+      const wordCount = wordsArray.length;
+
+      // Sentence count (splitting by ., !, ?)
+      const sentencesArray = text.trim() === '' ? [] : text.split(/[.!?]+/).filter(Boolean);
+      const sentenceCount = sentencesArray.length;
+
+      document.getElementById('wordCount').innerText = wordCount.toLocaleString('de-DE');
+      document.getElementById('charCountWithSpace').innerText = charWithSpace.toLocaleString('de-DE');
+      document.getElementById('charCountWithoutSpace').innerText = charWithoutSpace.toLocaleString('de-DE');
+      document.getElementById('sentenceCount').innerText = sentenceCount.toLocaleString('de-DE');
+    }
+
+    function clearText() {
+      document.getElementById('textInput').value = '';
+      analyzeText();
+    }
+  </script>
+</body>
+  </html>
+
