@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passwort Generator 2026 - Sichere Passwörter erstellen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Passwort Generator: Generieren Sie sichere, starke und zufällige Passwörter mit anpassbaren Optionen. Inkl. Sicherheitstipps & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Tool Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Sicherheit & Tools</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Passwort Generator</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Generieren Sie im Handumdrehen sichere, unknackbare Passwörter nach Ihren individuellen Kriterien.</p>
+    </div>
+
+    <!-- Interactive Generator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Display Result & Copy Button -->
+      <div class="mb-6 relative">
+        <div class="flex items-center bg-slate-900 text-white rounded-xl px-4 py-3.5 shadow-inner">
+          <input type="text" id="passwordOutput" readonly class="bg-transparent w-full text-lg sm:text-xl font-mono font-bold text-sky-400 focus:outline-none tracking-wider">
+          <button onclick="copyPassword()" class="ml-2 bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+            Kopieren
+          </button>
+        </div>
+        <div id="copyNotification" class="text-emerald-600 text-xs font-semibold mt-1.5 text-right h-4 opacity-0 transition-opacity duration-300">Passwort in die Zwischenablage kopiert!</div>
+      </div>
+
+      <!-- Längenauswahl Slider -->
+      <div class="mb-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+        <div class="flex justify-between items-center mb-2">
+          <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Passwortlänge</label>
+          <span id="lengthValue" class="font-extrabold text-sky-600 text-lg">16</span>
+        </div>
+        <input type="range" id="lengthRange" min="8" max="64" value="16" oninput="generatePassword()" class="w-full accent-sky-600 cursor-pointer">
+      </div>
+
+      <!-- Optionen Checkboxes -->
+      <div class="grid sm:grid-cols-2 gap-3 mb-8">
+        <label class="flex items-center p-3.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 transition text-sm font-semibold text-slate-700">
+          <input type="checkbox" id="includeUppercase" checked onchange="generatePassword()" class="w-4 h-4 text-sky-600 rounded focus:ring-sky-500 mr-3"> Großbuchstaben (A-Z)
+        </label>
+        <label class="flex items-center p-3.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 transition text-sm font-semibold text-slate-700">
+          <input type="checkbox" id="includeLowercase" checked onchange="generatePassword()" class="w-4 h-4 text-sky-600 rounded focus:ring-sky-500 mr-3"> Kleinbuchstaben (a-z)
+        </label>
+        <label class="flex items-center p-3.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 transition text-sm font-semibold text-slate-700">
+          <input type="checkbox" id="includeNumbers" checked onchange="generatePassword()" class="w-4 h-4 text-sky-600 rounded focus:ring-sky-500 mr-3"> Zahlen (0-9)
+        </label>
+        <label class="flex items-center p-3.5 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100 transition text-sm font-semibold text-slate-700">
+          <input type="checkbox" id="includeSymbols" checked onchange="generatePassword()" class="w-4 h-4 text-sky-600 rounded focus:ring-sky-500 mr-3"> Symbole (!@#$...)
+        </label>
+      </div>
+
+      <!-- Generate Action Button -->
+      <button onclick="generatePassword()" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        Neues Passwort generieren
+      </button>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Warum sichere Passwörter überlebenswichtig im Netz sind</h2>
+        <p class="mb-3">
+          Cyberkriminalität und automatisierte Hacker-Angriffe gehören zu den größten Bedrohungen im digitalen Alltag. Sobald ein Account durch ein zu schwaches oder erratemäßiges Passwort (wie "123456" oder "passwort") geschützt ist, haben Kriminelle leichtes Spiel, um an persönliche Daten, E-Mails oder Finanzkonten zu gelangen.
+        </p>
+        <p>
+          Ein starkes Passwort zeichnet sich durch ausreichende Länge und eine unvorhersehbare Kombination aus Groß- und Kleinbuchstaben, Ziffern sowie Sonderzeichen aus. Unser kostenloser Passwort-Generator erstellt sekundenschnell kryptische Kombinationen, die selbst von modernsten Brute-Force-Algorithmen nicht geknackt werden können.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Best Practices für den Umgang mit Passwörtern</h2>
+        <p class="mb-3">Damit Ihre Konten optimal geschützt bleiben, sollten Sie folgende Grundregeln beachten:</p>
+        
+        <div class="space-y-3 my-4">
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Niemals dasselbe Passwort verwenden</h3>
+            <p class="text-xs text-slate-500">Wenn ein Dienst gehackt wird, sind andernfalls sofort all Ihre anderen Accounts ebenfalls gefährdet.</p>
+          </div>
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Passwort-Manager nutzen</h3>
+            <p class="text-xs text-slate-500">Niemand kann sich Dutzende komplexe Passwörter merken. Ein vertrauenswürdiger Passwort-Manager verwaltet alle Zugangsdaten sicher.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Werden die generierten Passwörter auf Servern gespeichert?</h3>
+            <p class="text-slate-500 text-xs">
+              Nein absolut nicht! Die Generierung erfolgt zu 100 % lokal in Ihrem Browser mittels JavaScript. Es werden keinerlei Passwörter über das Internet übertragen oder gespeichert.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wie lang sollte ein sicheres Passwort mindestens sein?</h3>
+            <p class="text-slate-500 text-xs">
+              Experten und das BSI empfehlen eine Länge von mindestens 12 bis 16 Zeichen, idealerweise kombiniert aus allen Zeichentypen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Generator Script -->
+  <script>
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numberChars = '0123456789';
+    const symbolChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+    function generatePassword() {
+      const length = document.getElementById('lengthRange').value;
+      document.getElementById('lengthValue').innerText = length;
+
+      const hasUpper = document.getElementById('includeUppercase').checked;
+      const hasLower = document.getElementById('includeLowercase').checked;
+      const hasNumbers = document.getElementById('includeNumbers').checked;
+      const hasSymbols = document.getElementById('includeSymbols').checked;
+
+      let validChars = '';
+      if (hasUpper) validChars += uppercaseChars;
+      if (hasLower) validChars += lowercaseChars;
+      if (hasNumbers) validChars += numberChars;
+      if (hasSymbols) validChars += symbolChars;
+
+      if (validChars === '') {
+        document.getElementById('passwordOutput').value = 'Bitte mindestens eine Option wählen!';
+        return;
+      }
+
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * validChars.length);
+        password += validChars[randomIndex];
+      }
+
+      document.getElementById('passwordOutput').value = password;
+    }
+
+    function copyPassword() {
+      const passwordField = document.getElementById('passwordOutput');
+      if (!passwordField.value || passwordField.value.startsWith('Bitte')) return;
+
+      passwordField.select();
+      passwordField.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(passwordField.value);
+
+      const notification = document.getElementById('copyNotification');
+      notification.style.opacity = '1';
+      setTimeout(() => {
+        notification.style.opacity = '0';
+      }, 2000);
+    }
+
+    // Run on load
+    generatePassword();
+  </script>
+</body>
+  </html>
+  
