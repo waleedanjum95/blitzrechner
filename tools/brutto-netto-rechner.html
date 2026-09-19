@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brutto Netto Rechner 2026 - Nettogehalt berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Brutto Netto Rechner für Deutschland: Berechnen Sie Ihr Nettogehalt inkl. Steuern, Sozialabgaben und Steuerklassen. Mit Formeln & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Finanzen & Gehalt</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Brutto Netto Rechner</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Ermitteln Sie schnell Ihr monatliches Nettogehalt nach Abzug von Lohnsteuer, Solidaritätszuschlag und Sozialabgaben.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Brutto Income Input -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Bruttogehalt (Monatlich in €)</label>
+        <input type="number" id="bruttoInput" placeholder="z. B. 3500" oninput="calculateSalary()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-slate-900 font-extrabold text-2xl focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+      </div>
+
+      <!-- Tax Class Selection -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Steuerklasse</label>
+        <select id="taxClass" onchange="calculateSalary()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+          <option value="1">Steuerklasse 1 (Ledige, ohne Kind)</option>
+          <option value="2">Steuerklasse 2 (Alleinerziehende)</option>
+          <option value="3">Steuerklasse 3 (Verheiratete, Alleinverdiener)</option>
+          <option value="4" selected>Steuerklasse 4 (Verheiratete, beide Arbeitnehmer)</option>
+          <option value="5">Steuerklasse 5 (Verheiratete, Zweitverdiener)</option>
+          <option value="6">Steuerklasse 6 (Zweit- oder Nebenjob)</option>
+        </select>
+      </div>
+
+      <!-- Health Insurance Contribution -->
+      <div class="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Krankenversicherung Zusatzbeitrag (%)</label>
+          <input type="number" id="kvZusatz" value="1.7" step="0.1" oninput="calculateSalary()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Kinder</label>
+          <select id="childStatus" onchange="calculateSalary()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-sky-500">
+            <option value="no">Keine Kinder (Pflegeversicherung Standard)</option>
+            <option value="yes">Mit Kindern (Beitragsnachlass)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Bruttogehalt:</span>
+          <span id="resBrutto" class="font-bold text-slate-100 text-base">0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Lohnsteuer (ca.):</span>
+          <span id="resTax" class="font-bold text-rose-400 text-base">- 0,00 €</span>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Sozialabgaben (KV, RV, AV, PV):</span>
+          <span id="resSocial" class="font-bold text-amber-400 text-base">- 0,00 €</span>
+        </div>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+          <span class="font-semibold text-slate-300 text-base">Nettogehalt (Auszahlung):</span>
+          <span id="resNetto" class="font-extrabold text-2xl text-sky-400">0,00 €</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wie wird das Nettogehalt in Deutschland berechnet?</h2>
+        <p class="mb-3">
+          Der Weg vom Bruttogehalt zum tatsächlichen Nettogehalt ist in Deutschland durch verschiedene steuerliche Abzüge und Sozialversicherungsbeiträge geregelt. Arbeitnehmer müssen einen festen Prozentsatz ihres Einkommens für die gesetzliche Absicherung abführen, darunter die Renten-, Kranken-, Arbeitslosen- und Pflegeversicherung.
+        </p>
+        <p>
+          Zusätzlich wird je nach individueller Steuerklasse und Familienstand die Lohnsteuer sowie gegebenenfalls der Solidaritätszuschlag direkt vom Arbeitgeber einbehalten und an das Finanzamt abgeführt.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die Sozialabgaben im Überblick</h2>
+        <p class="mb-3">Die Beiträge zur Sozialversicherung werden in der Regel hälftig zwischen Arbeitgeber und Arbeitnehmer aufgeteilt:</p>
+        
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Rentenversicherung (ca. 9,3%)</h3>
+            <p class="text-xs text-slate-500">Dient der Absicherung im Alter sowie bei Erwerbsminderung.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Krankenversicherung (7,3% + Zusatz)</h3>
+            <p class="text-xs text-slate-500">Finanziert die medizinische Versorgung und das Krankengeld.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Arbeitslosenversicherung (1,3%)</h3>
+            <p class="text-xs text-slate-500">Sichert Arbeitnehmer bei Arbeitslosigkeit finanziell ab.</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-1">Pflegeversicherung (ca. 2,2%)</h3>
+            <p class="text-xs text-slate-500">Unterstützung im Pflegefall (abhängig von Kinderanzahl).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Welche Steuerklasse ist die richtige?</h2>
+        <p class="mb-3">
+          Die Wahl der Steuerklasse hängt primär von Ihrem Familienstand ab. Alleinstehende werden standardmäßig in Steuerklasse 1 eingeteilt. Verheiratete Paare können zwischen den Kombinationen 4/4, 3/5 oder 4/4 mit Faktor wählen, um das monatliche Nettoeinkommen zu optimieren.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Bleibt das Netto jedes Jahr gleich?</h3>
+            <p class="text-slate-500 text-xs">
+              Nein, durch gesetzliche Anpassungen der Beitragsbemessungsgrenzen und Zusatzbeiträge der Krankenkassen kann sich das Nettogehalt bei gleichem Bruttolohn leicht verändern.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wann lohnt sich ein Steuerklassenwechsel?</h3>
+            <p class="text-slate-500 text-xs">
+              Ein Wechsel empfiehlt sich besonders bei Heirat oder wenn ein Ehepartner deutlich mehr verdient als der andere (Kombination Steuerklasse 3 und 5).
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    function calculateSalary() {
+      const brutto = parseFloat(document.getElementById('bruttoInput').value) || 0;
+      const taxClass = parseInt(document.getElementById('taxClass').value);
+      const kvZusatz = parseFloat(document.getElementById('kvZusatz').value) || 1.7;
+      const hasChildren = document.getElementById('childStatus').value === 'yes';
+
+      if (brutto <= 0) {
+        document.getElementById('resBrutto').innerText = '0,00 €';
+        document.getElementById('resTax').innerText = '- 0,00 €';
+        document.getElementById('resSocial').innerText = '- 0,00 €';
+        document.getElementById('resNetto').innerText = '0,00 €';
+        return;
+      }
+
+      // Approximate social security contribution rates (Employee share)
+      const rvRate = 0.093; // Rentenversicherung 9.3%
+      const avRate = 0.013; // Arbeitslosenversicherung 1.3%
+      const kvRate = 0.073 + (kvZusatz / 200); // Krankenversicherung half + half of Zusatz
+      let pvRate = 0.022; // Pflegeversicherung base around 2.2%
+      if (hasChildren) {
+        pvRate = 0.017; // Reduced for children
+      }
+
+      const totalSocialRate = rvRate + avRate + kvRate + pvRate;
+      const socialDeduction = brutto * totalSocialRate;
+
+      // Approximate wage tax estimation based on tax class
+      let taxRate = 0.15; // Base estimate
+      if (taxClass === 1 || taxClass === 4) taxRate = 0.16;
+      if (taxClass === 2) taxRate = 0.12;
+      if (taxClass === 3) taxRate = 0.08;
+      if (taxClass === 5) taxRate = 0.28;
+      if (taxClass === 6) taxRate = 0.32;
+
+      // Higher income progressive tax adjustment
+      let taxDeduction = (brutto - 1000 > 0) ? (brutto - 1000) * taxRate : 0;
+      if (taxDeduction < 0) taxDeduction = 0;
+
+      const netto = brutto - socialDeduction - taxDeduction;
+
+      document.getElementById('resBrutto').innerText = brutto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resTax').innerText = '- ' + taxDeduction.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resSocial').innerText = '- ' + socialDeduction.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      document.getElementById('resNetto').innerText = netto.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+  </script>
+</body>
+  </html>
+  
