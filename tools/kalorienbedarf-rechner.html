@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalorienbedarf Rechner 2026 - Grundumsatz & Gesamtumsatz berechnen | BlitzRechner</title>
+  <meta name="description" content="Kostenloser Kalorienbedarf Rechner: Berechnen Sie Ihren täglichen Kalorienbedarf, Grundumsatz (BMR) und Gesamtumsatz nach Aktivitätslevel. Inkl. Tipps & FAQs.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition flex items-center gap-1">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Calculator Content -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-8">
+      <span class="px-3.5 py-1.5 bg-sky-100 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider">Gesundheit & Ernährung</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2">Kalorienbedarf Rechner</h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Berechnen Sie Ihren persönlichen Grundumsatz und täglichen Kalorienbedarf basierend auf Ihren Körperdaten und Aktivitätslevel.</p>
+    </div>
+
+    <!-- Interactive Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto mb-12">
+      
+      <!-- Geschlecht Auswahl -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Geschlecht</label>
+        <div class="grid grid-cols-2 gap-4">
+          <label class="flex items-center justify-center p-3.5 bg-slate-50 border border-slate-300 rounded-xl cursor-pointer hover:bg-slate-100 transition font-bold text-sm">
+            <input type="radio" name="gender" value="male" checked onchange="calculateCalories()" class="mr-2 text-sky-600 focus:ring-sky-500"> Männlich
+          </label>
+          <label class="flex items-center justify-center p-3.5 bg-slate-50 border border-slate-300 rounded-xl cursor-pointer hover:bg-slate-100 transition font-bold text-sm">
+            <input type="radio" name="gender" value="female" onchange="calculateCalories()" class="mr-2 text-sky-600 focus:ring-sky-500"> Weiblich
+          </label>
+        </div>
+      </div>
+
+      <!-- Gewicht, Größe, Alter Grid -->
+      <div class="grid sm:grid-cols-3 gap-4 mb-6">
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Gewicht (kg)</label>
+          <input type="number" id="weight" value="75" oninput="calculateCalories()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-extrabold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Größe (cm)</label>
+          <input type="number" id="height" value="175" oninput="calculateCalories()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-extrabold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Alter (Jahre)</label>
+          <input type="number" id="age" value="30" oninput="calculateCalories()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-extrabold text-lg focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+        </div>
+      </div>
+
+      <!-- Aktivitätslevel (PAL) -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Aktivitätslevel (PAL-Faktor)</label>
+        <select id="pal" onchange="calculateCalories()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition">
+          <option value="1.2">Wenig aktiv (überwiegend sitzen / kein Sport)</option>
+          <option value="1.375">Leicht aktiv (leichte Bewegung / 1-3x Sport pro Woche)</option>
+          <option value="1.55" selected>Moderat aktiv (mittlere Aktivität / 3-5x Sport pro Woche)</option>
+          <option value="1.725">Sehr aktiv (körperliche Arbeit / 6-7x Sport pro Woche)</option>
+          <option value="1.9">Extrem aktiv (Profisport / harte körperliche Arbeit)</option>
+        </select>
+      </div>
+
+      <!-- Result Panel -->
+      <div class="bg-slate-900 text-white rounded-xl p-6 space-y-3.5 shadow-inner">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400 font-medium">Grundumsatz (BMR):</span>
+          <span id="resBMR" class="font-bold text-slate-100 text-base">0 kcal</span>
+        </div>
+        <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+          <span class="font-semibold text-slate-300 text-base">Gesamtumsatz (Tagesbedarf):</span>
+          <span id="resTotal" class="font-extrabold text-2xl text-sky-400">0 kcal</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 350+ Words SEO Article Section -->
+    <article class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 text-slate-600 text-sm leading-relaxed shadow-sm max-w-2xl mx-auto">
+      
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Wie setzt sich der Kalorienbedarf zusammen?</h2>
+        <p class="mb-3">
+          Der tägliche Kalorienbedarf ist eine essenzielle Kenngröße, wenn es darum geht, das Körpergewicht zu halten, gesund abzunehmen oder gezielt Muskeln aufzubauen. Er setzt sich aus zwei Hauptkomponenten zusammen: dem Grundumsatz und dem Leistungsumsatz.
+        </p>
+        <p>
+          Der Grundumsatz (BMR - Basal Metabolic Rate) beschreibt jene Energiemenge, die der Körper in völliger Ruhe bei neutraler Umgebungstemperatur benötigt, um lebenswichtige Funktionen wie Atmung, Herzschlag und Organaktivität aufrechtzuerhalten. Der Gesamtumsatz berücksichtigt zusätzlich die Energie, die durch körperliche Aktivität, Sport und Verdauung verbraucht wird.
+        </p>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Die Formel nach Mifflin-St. Jeor</h2>
+        <p class="mb-3">Unser Rechner nutzt die wissenschaftlich anerkannte Formel nach Mifflin und St. Jeor zur exakten Bestimmung des Grundumsatzes:</p>
+        
+        <div class="bg-slate-900 text-slate-200 p-4 rounded-xl space-y-2 font-mono text-xs overflow-x-auto mb-4">
+          <p><strong class="text-sky-400">Männer:</strong> (10 × Gewicht in kg) + (6,25 × Größe in cm) - (5 × Alter in Jahren) + 5</p>
+          <p><strong class="text-sky-400">Frauen:</strong> (10 × Gewicht in kg) + (6,25 × Größe in cm) - (5 × Alter in Jahren) - 161</p>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Tipps zum Abnehmen und Zunehmen</h2>
+        <p class="mb-3">
+          Wer abnehmen möchte, sollte ein moderates Kaloriendefizit von ca. 300 bis 500 kcal unter dem Gesamtumsatz anstreben. Für den Muskelaufbau empfiehlt sich hingegen ein leichter Kalorienüberschuss in Kombination mit Krafttraining.
+        </p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="border-t border-slate-100 pt-6">
+        <h2 class="text-xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Was bedeutet der PAL-Faktor?</h3>
+            <p class="text-slate-500 text-xs">
+              PAL steht für "Physical Activity Level". Dieser Multiplikator drückt aus, wie aktiv eine Person im Alltag und Beruf ist, und dient der Berechnung des Gesamtumsatzes aus dem Grundumsatz.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 mb-1">Wie genau sind solche Online-Rechner?</h3>
+            <p class="text-slate-500 text-xs">
+              Die Formeln liefern hochpräzise Näherungswerte für den Durchschnittsmenschen. Da individuelle Faktoren wie die Genetik oder der Muskelanteil variieren können, empfiehlt es sich, das Gewicht über 2 Wochen zu beobachten und den Wert bei Bedarf leicht anzupassen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Calculation Script -->
+  <script>
+    function calculateCalories() {
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const weight = parseFloat(document.getElementById('weight').value) || 0;
+      const height = parseFloat(document.getElementById('height').value) || 0;
+      const age = parseFloat(document.getElementById('age').value) || 0;
+      const pal = parseFloat(document.getElementById('pal').value) || 1.2;
+
+      if (weight <= 0 || height <= 0 || age <= 0) {
+        document.getElementById('resBMR').innerText = '0 kcal';
+        document.getElementById('resTotal').innerText = '0 kcal';
+        return;
+      }
+
+      // Mifflin-St. Jeor Equation
+      let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+      if (gender === 'male') {
+        bmr += 5;
+      } else {
+        bmr -= 161;
+      }
+
+      const totalCalories = bmr * pal;
+
+      document.getElementById('resBMR').innerText = Math.round(bmr).toLocaleString('de-DE') + ' kcal';
+      document.getElementById('resTotal').innerText = Math.round(totalCalories).toLocaleString('de-DE') + ' kcal';
+    }
+
+    // Run calculation on load
+    calculateCalories();
+  </script>
+</body>
+  </html>
+  
