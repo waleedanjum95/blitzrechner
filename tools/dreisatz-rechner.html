@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreisatz Rechner - Proportional & Antiproportional | BlitzRechner</title>
+  <meta name="description" content="Lösen Sie proportionale und antiproportionale Dreisatz-Aufgaben schnell und einfach online. Kostenloser Dreisatz-Rechner mit Erklärung.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 bg-sky-50 px-4 py-2 rounded-xl border border-sky-100 transition">
+        ← Zurück zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">✖️</div>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Dreisatz Rechner</h1>
+          <p class="text-slate-500 text-sm">Lösen Sie proportionale und antiproportionale Aufgaben mühelos.</p>
+        </div>
+      </div>
+
+      <!-- Type Selector -->
+      <div class="mb-6">
+        <label class="block text-xs font-semibold text-slate-600 mb-2">Art des Dreisatzes</label>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" id="btn-prop" onclick="setRatioType('proportional')" class="py-2.5 px-4 rounded-xl text-sm font-semibold border border-sky-500 bg-sky-50 text-sky-700 transition">Proportional (je mehr, desto mehr)</button>
+          <button type="button" id="btn-anti" onclick="setRatioType('antiproportional')" class="py-2.5 px-4 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition">Antiproportional (je mehr, desto weniger)</button>
+        </div>
+      </div>
+
+      <!-- Inputs Container -->
+      <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100 mb-6">
+        <div class="grid sm:grid-cols-2 gap-4 items-center">
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Wenn A gilt:</label>
+            <input type="number" id="val-a" value="3" oninput="calculateDreisatz()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Dann entspricht das B:</label>
+            <input type="number" id="val-b" value="15" oninput="calculateDreisatz()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+        </div>
+        
+        <div class="border-t border-slate-200 pt-4">
+          <label class="block text-xs font-medium text-slate-600 mb-1">Was ist gesucht für C?</label>
+          <input type="number" id="val-c" value="5" oninput="calculateDreisatz()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+        </div>
+      </div>
+
+      <!-- Result Box -->
+      <div id="result-box" class="bg-sky-50 border border-sky-100 rounded-xl p-5 text-center">
+        <h3 class="text-sm font-semibold text-sky-800 mb-1">Ergebnis (gesuchter Wert X):</h3>
+        <div id="result-text" class="text-2xl font-extrabold text-sky-900">25</div>
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Wie funktioniert der Dreisatz?</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Der Dreisatz ist eine mathematische Methode, um aus drei bekannten Werten den vierten, unbekannten Wert zu berechnen. Man unterscheidet dabei zwischen zwei Grundarten:
+      </p>
+      <ul class="list-disc list-inside text-sm text-slate-600 space-y-2 mb-4">
+        <li><strong>Proportionaler Dreisatz:</strong> Je mehr A, desto mehr B (z. B. Menge und Preis).</li>
+        <li><strong>Antiproproportionaler (umgekehrter) Dreisatz:</strong> Je mehr A, desto weniger B (z. B. Arbeiter und Arbeitszeit).</li>
+      </ul>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    let currentType = 'proportional';
+
+    function setRatioType(type) {
+      currentType = type;
+      const btnProp = document.getElementById('btn-prop');
+      const btnAnti = document.getElementById('btn-anti');
+
+      if (type === 'proportional') {
+        btnProp.className = "py-2.5 px-4 rounded-xl text-sm font-semibold border border-sky-500 bg-sky-50 text-sky-700 transition";
+        btnAnti.className = "py-2.5 px-4 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition";
+      } else {
+        btnAnti.className = "py-2.5 px-4 rounded-xl text-sm font-semibold border border-sky-500 bg-sky-50 text-sky-700 transition";
+        btnProp.className = "py-2.5 px-4 rounded-xl text-sm font-semibold border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition";
+      }
+      calculateDreisatz();
+    }
+
+    function calculateDreisatz() {
+      const a = parseFloat(document.getElementById('val-a').value);
+      const b = parseFloat(document.getElementById('val-b').value);
+      const c = parseFloat(document.getElementById('val-c').value);
+
+      if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+        document.getElementById('result-text').textContent = "Bitte gültige Werte eingeben";
+        return;
+      }
+
+      let result;
+      if (currentType === 'proportional') {
+        // Proportional: (B / A) * C
+        result = (b / a) * c;
+      } else {
+        // Antiproportional: (A * B) / C
+        result = (a * b) / c;
+      }
+
+      // Format result nicely
+      let formattedResult = Number.isInteger(result) ? result : result.toFixed(2);
+      document.getElementById('result-text').textContent = formattedResult;
+    }
+
+    // Run initial calculation on load
+    window.onload = calculateDreisatz;
+  </script>
+
+</body>
+</html>
