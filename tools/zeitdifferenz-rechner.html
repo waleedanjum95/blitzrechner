@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeitdifferenz Rechner - Stunden & Tage berechnen | BlitzRechner</title>
+  <meta name="description" content="Berechnen Sie die genaue Zeitdifferenz in Stunden, Minuten und Tagen zwischen zwei Daten und Uhrzeiten. Kostenloser Online-Rechner.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 bg-sky-50 px-4 py-2 rounded-xl border border-sky-100 transition">
+        ← Zurück zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">⏳</div>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Zeitdifferenz Rechner</h1>
+          <p class="text-slate-500 text-sm">Berechnen Sie die genaue Zeitspanne zwischen zwei Zeitpunkten.</p>
+        </div>
+      </div>
+
+      <!-- Inputs Grid -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-6">
+        <!-- Start Time -->
+        <div class="space-y-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <h3 class="font-semibold text-slate-900 text-sm">Startzeitpunkt</h3>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Datum</label>
+            <input type="date" id="start-date" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Uhrzeit</label>
+            <input type="time" id="start-time" value="00:00" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+        </div>
+
+        <!-- End Time -->
+        <div class="space-y-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <h3 class="font-semibold text-slate-900 text-sm">Endzeitpunkt</h3>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Datum</label>
+            <input type="date" id="end-date" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Uhrzeit</label>
+            <input type="time" id="end-time" value="00:00" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+        </div>
+      </div>
+
+      <button onclick="calculateDifference()" class="w-full bg-sky-600 text-white font-semibold py-3 rounded-xl hover:bg-sky-700 transition shadow-sm mb-6">
+        Zeitdifferenz berechnen
+      </button>
+
+      <!-- Result Box -->
+      <div id="result-box" class="hidden bg-sky-50 border border-sky-100 rounded-xl p-5 text-center">
+        <h3 class="text-sm font-semibold text-sky-800 mb-2">Ergebnis der Zeitdifferenz:</h3>
+        <div id="result-text" class="text-lg font-extrabold text-sky-900"></div>
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Wofür wird ein Zeitdifferenz-Rechner genutzt?</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Egal ob Sie die genaue Arbeitszeit zwischen zwei Stempelzeiten berechnen möchten, die Dauer einer Reise planen oder wissen wollen, wie viele Tage und Stunden bis zu einem bestimmten Event verbleiben – unser Online-Rechner ermittelt die Zeitspanne sekundengenau.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Häufig gestellte Fragen (FAQ)</h3>
+      <div class="space-y-4 text-sm">
+        <div>
+          <h4 class="font-semibold text-slate-900">Werden auch Schaltjahre berücksichtigt?</h4>
+          <p class="text-slate-600">Ja, die Berechnung basiert auf den standardmässigen JavaScript-Datumsfunktionen, welche Schaltjahre und unterschiedliche Monatslängen automatisch einrechnen.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-900">Kann man Zeitzonen berücksichtigen?</h4>
+          <p class="text-slate-600">Der Rechner nutzt die lokale Zeit Ihres Browsers für die eingegebenen Werte.</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Set default dates to today
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('start-date').value = today;
+      document.getElementById('end-date').value = today;
+    });
+
+    function calculateDifference() {
+      const startDate = document.getElementById('start-date').value;
+      const startTime = document.getElementById('start-time').value;
+      const endDate = document.getElementById('end-date').value;
+      const endTime = document.getElementById('end-time').value;
+
+      if (!startDate || !endDate) {
+        alert('Bitte wählen Sie beide Daten aus.');
+        return;
+      }
+
+      const start = new Date(`${startDate}T${startTime || '00:00'}`);
+      const end = new Date(`${endDate}T${endTime || '00:00'}`);
+
+      let diffMs = end - start;
+      if (diffMs < 0) {
+        alert('Das Enddatum/-zeit muss nach dem Startdatum/-zeit liegen.');
+        return;
+      }
+
+      const diffSec = Math.floor(diffMs / 1000);
+      const diffMin = Math.floor(diffSec / 60);
+      const diffHours = Math.floor(diffMin / 60);
+      const diffDays = Math.floor(diffHours / 24);
+
+      const remHours = diffHours % 24;
+      const remMins = diffMin % 60;
+
+      let resultString = '';
+      if (diffDays > 0) {
+        resultString += `${diffDays} Tag${diffDays === 1 ? '' : 'e'}, `;
+      }
+      resultString += `${remHours} Stunde${remHours === 1 ? '' : 'n'} und ${remMins} Minute${remMins === 1 ? '' : 'n'}`;
+
+      document.getElementById('result-box').classList.remove('hidden');
+      document.getElementById('result-text').textContent = resultString;
+    }
+  </script>
+
+</body>
+</html>
