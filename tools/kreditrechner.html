@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kreditrechner 2026 - Monatliche Rate & Gesamtkosten berechnen</title>
+  <meta name="description" content="Kostenloser Kreditrechner für Kredite und Finanzierungen. Berechnen Sie monatliche Rate, Zinsen und Gesamtkosten schnell und einfach online.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 transition">&larr; Zurück zur Übersicht</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center mb-10">
+      <span class="text-xs font-bold bg-sky-50 text-sky-700 px-3.5 py-1.5 rounded-full border border-sky-100 uppercase tracking-wider">Finanzen & Kredite</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-2">
+        Kreditrechner
+      </h1>
+      <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">
+        Berechnen Sie Ihre monatliche Kreditrate, die anfallenden Gesamtzinsen und die Gesamtkosten Ihres Darlehens.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Inputs Column -->
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Kreditsumme (€)</label>
+            <input type="number" id="loanAmount" value="10000" min="500" step="500" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none text-lg font-semibold">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Sollzinssatz (p.a. in %)</label>
+            <input type="number" id="interestRate" value="4.5" min="0" max="50" step="0.1" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none text-lg font-semibold">
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Laufzeit (in Jahren)</label>
+            <input type="number" id="loanTerm" value="5" min="1" max="35" step="1" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none text-lg font-semibold">
+          </div>
+        </div>
+
+        <!-- Results Column -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Berechnungsergebnis</h3>
+            
+            <div class="space-y-4">
+              <div class="pb-3 border-b border-slate-200/60">
+                <span class="text-xs text-slate-500 block">Monatliche Rate</span>
+                <span id="monthlyPayment" class="text-3xl font-black text-sky-600">0,00 €</span>
+              </div>
+
+              <div class="pb-3 border-b border-slate-200/60">
+                <span class="text-xs text-slate-500 block">Gesamtzinsen</span>
+                <span id="totalInterest" class="text-xl font-bold text-slate-800">0,00 €</span>
+              </div>
+
+              <div>
+                <span class="text-xs text-slate-500 block">Gesamtkosten (Summe aller Zahlungen)</span>
+                <span id="totalPayment" class="text-xl font-bold text-slate-800">0,00 €</span>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="calculateLoan()" class="w-full mt-6 bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition">
+            Jetzt Berechnen
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <div class="prose max-w-none text-slate-600 space-y-8">
+      
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Wie funktioniert der Kreditrechner?</h2>
+        <p class="leading-relaxed mb-4">
+          Ein Kredit will gut geplant sein. Mit unserem kostenlosen Kreditrechner können Sie schnell und unkompliziert ermitteln, welche monatliche finanzielle Belastung durch ein Darlehen auf Sie zukommt. Egal ob für ein neues Auto, Möbel, eine Umschuldung oder größere Anschaffungen – die Planung der monatlichen Raten schafft finanzielle Sicherheit.
+        </p>
+        <p class="leading-relaxed">
+          Der Rechner berücksichtigt die drei wichtigsten Faktoren eines Kredits: die Kreditsumme, den effektiven bzw. Sollzinssatz und die Laufzeit in Jahren. Daraus ermittelt er präzise die monatliche Annuität sowie die Gesamtkosten.
+        </p>
+      </section>
+
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Anleitung: So nutzen Sie den Rechner richtig</h2>
+        <ol class="list-decimal pl-5 space-y-3">
+          <li><strong>Kreditsumme eingeben:</strong> Tragen Sie den gewünschten Nettodarlehensbetrag ein, den Sie von der Bank leihen möchten (z. B. 10.000 €).</li>
+          <li><strong>Zinssatz festlegen:</strong> Geben Sie den jährlichen Sollzinssatz (p.a.) ein, den Ihre Bank anbietet oder den Sie kalkulieren möchten.</li>
+          <li><strong>Laufzeit wählen:</strong> Bestimmen Sie, über wie viele Jahre hinweg der Kredit abbezahlt werden soll (z. B. 5 Jahre).</li>
+          <li><strong>Ergebnis ablesen:</strong> Die monatliche Rate sowie die Gesamtzinsen aktualisieren sich automatisch oder per Klick auf „Jetzt Berechnen“.</li>
+        </ol>
+      </section>
+
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Häufig gestellte Fragen (FAQ)</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Was ist der Unterschied zwischen Sollzins und Effektivzins?</h3>
+            <p class="text-sm leading-relaxed">Der Sollzins (früher Nominalzins) ist der reine Zins, den Sie für das geliehene Geld zahlen. Der Effektivzins enthält zusätzlich eventuelle Nebenkosten (wie Bearbeitungsgebühren) und spiegelt damit die tatsächlichen jährlichen Gesamtkosten des Kredits wider.</p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Wie beeinflusst die Laufzeit die monatliche Rate?</h3>
+            <p class="text-sm leading-relaxed">Je länger die Laufzeit gewählt wird, desto geringer ist die monatliche Rate, da sich der Betrag auf mehr Monate verteilt. Allerdings steigen dadurch auch die Gesamtkosten, da über einen längeren Zeitraum Zinsen anfallen.</p>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1:">Ist die Nutzung des Kreditrechners kostenlos?</h3>
+            <p class="text-sm leading-relaxed">Ja, unser Online-Kreditrechner ist komplett kostenlos, erfordert keine Registrierung und kann beliebig oft für verschiedene Szenarien genutzt werden.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs mt-16">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Loan Calculation -->
+  <script>
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('loanAmount').value) || 0;
+      const rate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const termYears = parseFloat(document.getElementById('loanTerm').value) || 0;
+
+      const months = termYears * 12;
+      const monthlyRate = (rate / 100) / 12;
+
+      let payment = 0;
+      if (monthlyRate === 0) {
+        payment = amount / months;
+      } else {
+        payment = (amount * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      }
+
+      const totalPayment = payment * months;
+      const totalInterest = totalPayment - amount;
+
+      document.getElementById('monthlyPayment').innerText = payment.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      document.getElementById('totalInterest').innerText = totalInterest.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+      document.getElementById('totalPayment').innerText = totalPayment.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
+    }
+
+    // Calculate on load
+    window.onload = calculateLoan;
+
+    // Optional: Real-time calculation on input change
+    document.getElementById('loanAmount').addEventListener('input', calculateLoan);
+    document.getElementById('interestRate').addEventListener('input', calculateLoan);
+    document.getElementById('loanTerm').addEventListener('input', calculateLoan);
+  </script>
+
+</body>
+</html>
