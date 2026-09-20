@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wasserverbrauch Rechner - Wasserkosten & Verbrauch ermitteln | BlitzRechner</title>
+  <meta name="description" content="Berechnen Sie Ihren täglichen und jährlichen Wasserverbrauch im Haushalt sowie die anfallenden Kosten. Kostenloser Online-Wasserrechner.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 bg-sky-50 px-4 py-2 rounded-xl border border-sky-100 transition">
+        ← Zurück zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">💧</div>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Wasserverbrauch Rechner</h1>
+          <p class="text-slate-500 text-sm">Kalkulieren Sie Ihren Wasserverbrauch und die Kosten für Ihren Haushalt.</p>
+        </div>
+      </div>
+
+      <!-- Inputs Container -->
+      <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100 mb-6">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Anzahl der Personen im Haushalt</label>
+            <input type="number" id="persons" value="2" min="1" oninput="calculateWater()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Durchschnittsverbrauch pro Person (Liter/Tag)</label>
+            <input type="number" id="liters-per-day" value="120" min="50" max="300" oninput="calculateWater()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-600 mb-1">Wasserpreis (€ pro Kubikmeter / 1.000 Liter)</label>
+          <input type="number" id="water-price" value="4.00" min="1" step="0.10" oninput="calculateWater()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+        </div>
+      </div>
+
+      <!-- Result Box -->
+      <div id="result-box" class="bg-sky-50 border border-sky-100 rounded-xl p-5">
+        <h3 class="text-sm font-semibold text-sky-800 mb-3 text-center">Ihr geschätzter Wasserverbrauch:</h3>
+        <div class="space-y-2 text-sm text-sky-900">
+          <div class="flex justify-between border-b border-sky-200/60 pb-1">
+            <span>Verbrauch pro Jahr (Kubikmeter):</span>
+            <span id="res-cbm" class="font-bold">87.6 m³</span>
+          </div>
+          <div class="flex justify-between border-b border-sky-200/60 pb-1">
+            <span>Verbrauch pro Jahr (Liter):</span>
+            <span id="res-liters" class="font-bold">87.600 Liter</span>
+          </div>
+          <div class="flex justify-between pt-2 text-base font-extrabold text-sky-950">
+            <span>Geschätzte Gesamtkosten pro Jahr:</span>
+            <span id="res-cost">350,40 €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Wie hoch ist der durchschnittliche Wasserverbrauch?</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        In Deutschland liegt der Pro-Kopf-Wasserverbrauch im Haushalt bei etwa 120 bis 125 Litern pro Tag. Dieser Wert verteilt sich auf verschiedene Bereiche wie Duschen und Baden, Toilettenspülung, Wäsche waschen, Kochen und Trinken. Mit unserem Wasserverbrauch-Rechner können Sie schnell ermitteln, wie viel Wasser Ihr gesamter Haushalt im Jahr verbraucht und welche Kosten dafür anfallen.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Tipps zum Wassersparen im Alltag</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Wasser ist eine wertvolle Ressource, und das Einsparen schont nicht nur die Umwelt, sondern auch den Geldbeutel (insbesondere bei den Kosten für Warmwasserbereitung). Hier sind einige einfache Tipps:
+      </p>
+      <ul class="list-disc list-inside text-sm text-slate-600 space-y-2 mb-4">
+        <li><strong>Duschen statt Baden:</strong> Eine Badewanne verbraucht oft doppelt so viel Wasser wie ein kurzes Duschen.</li>
+        <li><strong>Wasserspar-Duschköpfe:</strong> Diese reduzieren den Durchfluss spürbar, ohne den Komfort zu mindern.</li>
+        <li><strong>Waschmaschine voll laden:</strong> Starten Sie Maschinen erst, wenn sie vollständig gefüllt sind.</li>
+        <li><strong>Tropfende Wasserhähne reparieren:</strong> Schon wenige tropfende Wasserhähne verschwenden über das Jahr hunderte Liter Wasser.</li>
+      </ul>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function calculateWater() {
+      const persons = parseFloat(document.getElementById('persons').value) || 0;
+      const litersPerDay = parseFloat(document.getElementById('liters-per-day').value) || 0;
+      const pricePerCbm = parseFloat(document.getElementById('water-price').value) || 0;
+
+      // Total liters per year = persons * liters/day * 365 days
+      const totalLitersYear = persons * litersPerDay * 365;
+      
+      // 1 cubic meter (m³) = 1,000 liters
+      const totalCbmYear = totalLitersYear / 1000;
+
+      // Total cost = m³ * price per m³
+      const totalCost = totalCbmYear * pricePerCbm;
+
+      document.getElementById('res-cbm').textContent = totalCbmYear.toFixed(1).replace('.', ',') + ' m³';
+      document.getElementById('res-liters').textContent = totalLitersYear.toLocaleString('de-DE') + ' Liter';
+      document.getElementById('res-cost').textContent = totalCost.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    }
+
+    // Run initial calculation on load
+    window.onload = calculateWater;
+  </script>
+
+</body>
+</html>
