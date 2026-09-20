@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inflationsrechner 2026 – Kaufkraft berechnen</title>
+
+<meta name="description" content="Kostenloser Inflationsrechner: Berechnen Sie zukünftige Preise, Kaufkraftverlust und Inflation einfach online.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+}
+</style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<div class="max-w-5xl mx-auto px-4 h-20 flex items-center justify-between">
+
+<a href="../index.html" class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl">⚡</div>
+
+<span class="text-2xl font-extrabold text-slate-900">
+Blitz<span class="text-sky-600">Rechner</span>
+</span>
+</a>
+
+<span class="text-xs font-bold bg-sky-50 text-sky-700 px-3 py-1.5 rounded-full">
+Kostenlos
+</span>
+
+</div>
+</header>
+
+
+<main class="max-w-5xl mx-auto px-4 py-10 w-full flex-grow">
+
+<section class="text-center max-w-3xl mx-auto mb-8">
+
+<div class="text-5xl mb-4">📉</div>
+
+<p class="text-xs font-bold uppercase tracking-wider text-sky-600 mb-2">
+Finanzen & Wirtschaft
+</p>
+
+<h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4">
+Inflationsrechner
+</h1>
+
+<p class="text-base sm:text-lg text-slate-500">
+Berechnen Sie die Auswirkungen von Inflation auf Preise und Kaufkraft.
+</p>
+
+</section>
+
+
+<section class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 sm:p-8 max-w-2xl mx-auto">
+
+<h2 class="text-xl font-bold text-slate-900 mb-6">
+Inflation berechnen
+</h2>
+
+<div class="space-y-5">
+
+<div>
+<label for="amount" class="block text-sm font-semibold mb-2">
+Ausgangsbetrag (€)
+</label>
+
+<input id="amount" type="number" min="0" step="0.01" value="1000"
+class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500">
+</div>
+
+
+<div>
+<label for="rate" class="block text-sm font-semibold mb-2">
+Jährliche Inflationsrate (%)
+</label>
+
+<input id="rate" type="number" min="0" step="0.1" value="3"
+class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500">
+</div>
+
+
+<div>
+<label for="years" class="block text-sm font-semibold mb-2">
+Zeitraum (Jahre)
+</label>
+
+<input id="years" type="number" min="0" step="1" value="10"
+class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500">
+</div>
+
+
+<button onclick="calculateInflation()"
+class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl px-5 py-3 transition">
+
+Jetzt berechnen
+
+</button>
+
+</div>
+
+
+<div id="error" class="hidden mt-5 rounded-xl bg-red-50 text-red-700 p-4 text-sm"></div>
+
+
+<div id="result" class="hidden mt-6 grid gap-4 sm:grid-cols-2">
+
+<div class="rounded-xl bg-sky-50 border border-sky-100 p-4">
+
+<p class="text-sm text-slate-600">
+Zukünftiger Preis
+</p>
+
+<p id="futurePrice" class="text-2xl font-extrabold text-sky-700 mt-1">
+–
+</p>
+
+</div>
+
+
+<div class="rounded-xl bg-amber-50 border border-amber-100 p-4">
+
+<p class="text-sm text-slate-600">
+Kaufkraftverlust
+</p>
+
+<p id="loss" class="text-2xl font-extrabold text-amber-700 mt-1">
+–
+</p>
+
+</div>
+
+
+<div class="rounded-xl bg-slate-50 border border-slate-200 p-4 sm:col-span-2">
+
+<p class="text-sm text-slate-600">
+Verbleibende Kaufkraft
+</p>
+
+<p id="purchasingPower" class="text-2xl font-extrabold text-slate-900 mt-1">
+–
+</p>
+
+<p id="summary" class="text-sm text-slate-500 mt-2"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="max-w-3xl mx-auto mt-10 space-y-8">
+
+
+<article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+
+<h2 class="text-2xl font-bold text-slate-900 mb-4">
+Was ist Inflation?
+</h2>
+
+<p class="text-slate-600 leading-7">
+
+Inflation beschreibt den allgemeinen Anstieg der Preise über einen bestimmten Zeitraum.
+Wenn die Preise steigen, kann man mit dem gleichen Geldbetrag weniger Waren und Dienstleistungen kaufen.
+Unser kostenloser Inflationsrechner hilft Ihnen dabei, die Auswirkungen einer gleichbleibenden jährlichen Inflationsrate zu verstehen.
+
+Geben Sie Ihren Ausgangsbetrag, die erwartete Inflationsrate und den Zeitraum ein.
+Der Rechner zeigt Ihnen den zukünftigen Preis, den Kaufkraftverlust und die verbleibende Kaufkraft.
+
+Das Ergebnis ist eine mathematische Schätzung und keine Garantie für die tatsächliche Preisentwicklung.
+Die Inflation kann je nach Land, Produkt und wirtschaftlicher Situation unterschiedlich sein.
+
+Der Rechner eignet sich für die Finanzplanung, Sparziele, langfristige Anschaffungen und den Vergleich verschiedener Inflationsszenarien.
+Besonders bei längeren Zeiträumen wird deutlich, wie sich jährliche Preissteigerungen auf das Preisniveau auswirken.
+
+</p>
+
+</article>
+
+
+<article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+
+<h2 class="text-2xl font-bold text-slate-900 mb-4">
+So verwenden Sie den Inflationsrechner
+</h2>
+
+<ol class="list-decimal list-inside space-y-3 text-slate-600 leading-7">
+
+<li>Geben Sie den heutigen Geldbetrag in Euro ein.</li>
+
+<li>Tragen Sie die erwartete jährliche Inflationsrate ein.</li>
+
+<li>Wählen Sie den Zeitraum in Jahren.</li>
+
+<li>Klicken Sie auf „Jetzt berechnen“.</li>
+
+<li>Vergleichen Sie den zukünftigen Preis und die verbleibende Kaufkraft.</li>
+
+</ol>
+
+</article>
+
+
+<article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+
+<h2 class="text-2xl font-bold text-slate-900 mb-4">
+Häufig gestellte Fragen (FAQ)
+</h2>
+
+<div class="space-y-5">
+
+
+<div>
+<h3 class="font-bold text-slate-900">
+Was berechnet der Inflationsrechner?
+</h3>
+
+<p class="text-slate-600 mt-1">
+Der Rechner schätzt die zukünftige Preisentwicklung und zeigt den möglichen Kaufkraftverlust eines Geldbetrags.
+</p>
+</div>
+
+
+<div>
+<h3 class="font-bold text-slate-900">
+Welche Inflationsrate soll ich verwenden?
+</h3>
+
+<p class="text-slate-600 mt-1">
+Verwenden Sie eine angenommene oder recherchierte durchschnittliche Jahresrate. Sie können verschiedene Szenarien vergleichen.
+</p>
+</div>
+
+
+<div>
+<h3 class="font-bold text-slate-900">
+Sind die Ergebnisse garantiert?
+</h3>
+
+<p class="text-slate-600 mt-1">
+Nein. Die Berechnung basiert auf einer konstanten Inflationsrate. Die tatsächliche Entwicklung kann abweichen.
+</p>
+</div>
+
+
+<div>
+<h3 class="font-bold text-slate-900">
+Ist der Rechner kostenlos?
+</h3>
+
+<p class="text-slate-600 mt-1">
+Ja. Der Inflationsrechner kann kostenlos und ohne Registrierung verwendet werden.
+</p>
+</div>
+
+
+</div>
+
+</article>
+
+</section>
+
+</main>
+
+
+<footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs">
+
+<p>
+© 2026 BlitzRechner. Alle Rechte vorbehalten.
+</p>
+
+</footer>
+
+
+<script>
+
+function calculateInflation() {
+
+const amount = Number(document.getElementById("amount").value);
+
+const rate = Number(document.getElementById("rate").value);
+
+const years = Number(document.getElementById("years").value);
+
+const error = document.getElementById("error");
+
+const result = document.getElementById("result");
+
+
+error.classList.add("hidden");
+
+result.classList.add("hidden");
+
+
+if (
+!Number.isFinite(amount) ||
+!Number.isFinite(rate) ||
+!Number.isFinite(years) ||
+amount < 0 ||
+rate < 0 ||
+years < 0 ||
+years > 1000
+) {
+
+error.textContent = "Bitte geben Sie gültige Werte ein.";
+
+error.classList.remove("hidden");
+
+return;
+
+}
+
+
+const factor = Math.pow(1 + rate / 100, years);
+
+const futurePrice = amount * factor;
+
+const purchasingPower = amount / factor;
+
+const lossPercent = (1 - 1 / factor) * 100;
+
+
+const euro = value => new Intl.NumberFormat("de-DE", {
+style: "currency",
+currency: "EUR"
+}).format(value);
+
+
+document.getElementById("futurePrice").textContent =
+euro(futurePrice);
+
+
+document.getElementById("purchasingPower").textContent =
+euro(purchasingPower);
+
+
+document.getElementById("loss").textContent =
+lossPercent.toFixed(2).replace(".", ",") + " %";
+
+
+document.getElementById("summary").textContent =
+`${euro(amount)} entsprechen bei ${rate.toFixed(2).replace(".", ",")} % Inflation über ${years} Jahre ungefähr ${euro(purchasingPower)} heutiger Kaufkraft.`;
+
+
+result.classList.remove("hidden");
+
+}
+
+
+calculateInflation();
+
+</script>
+
+</body>
+</html>
