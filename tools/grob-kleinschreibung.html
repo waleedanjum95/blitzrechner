@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groß- und Kleinschreibung Rechner - Text umwandeln | BlitzRechner</title>
+  <meta name="description" content="Wandeln Sie Text blitzschnell in Großbuchstaben, Kleinbuchstaben oder Satzanfänge um. Kostenloses Online-Tool für Groß- und Kleinschreibung.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 bg-sky-50 px-4 py-2 rounded-xl border border-sky-100 transition">
+        ← Zurück zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Calculator / Tool Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">Aa</div>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Groß- / Kleinschreibung Tool</h1>
+          <p class="text-slate-500 text-sm">Wandeln Sie Text ganz einfach per Knopfdruck um.</p>
+        </div>
+      </div>
+
+      <!-- Text Input Area -->
+      <div class="mb-4">
+        <label class="block text-xs font-medium text-slate-600 mb-1">Ihr Text</label>
+        <textarea id="text-input" rows="5" placeholder="Geben Sie hier Ihren Text ein..." oninput="updateStats()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm bg-slate-50"></textarea>
+      </div>
+
+      <!-- Action Buttons Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
+        <button onclick="convertToUpperCase()" class="px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 font-semibold rounded-lg text-xs transition">GROSSBUCHSTABEN</button>
+        <button onclick="convertToLowerCase()" class="px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 font-semibold rounded-lg text-xs transition">kleinbuchstaben</button>
+        <button onclick="convertToSentenceCase()" class="px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 font-semibold rounded-lg text-xs transition">Satzanfang</button>
+        <button onclick="convertToTitleCase()" class="px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 font-semibold rounded-lg text-xs transition">Titel Format</button>
+      </div>
+
+      <!-- Stats Footer inside Card -->
+      <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 bg-slate-50 px-4 py-3 rounded-xl border border-slate-100">
+        <div>Zeichen: <span id="char-count" class="font-bold text-slate-700">0</span></div>
+        <div>Wörter: <span id="word-count" class="font-bold text-slate-700">0</span></div>
+        <button onclick="copyText()" class="text-sky-600 hover:text-sky-700 font-semibold transition">Text kopieren 📋</button>
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Text schnell und einfach formatieren</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Manchmal kopiert man einen Text aus einer Quelle, bei der versehentlich alles in Großbuchstaben oder Kleinbuchstaben geschrieben wurde. Anstatt den gesamten Text mühsam neu zu tippen, hilft unser online Text-Tool. Mit nur wenigen Klicks können Sie die Groß- und Kleinschreibung anpassen.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Die verschiedenen Optionen im Überblick</h3>
+      <ul class="list-disc list-inside text-sm text-slate-600 space-y-2 mb-4">
+        <li><strong>GROSSBUCHSTABEN:</strong> Wandelt den gesamten Text in Großbuchstaben (CAPS LOCK) um.</li>
+        <li><strong>kleinbuchstaben:</strong> Konvertiert alle Zeichen in Kleinbuchstaben.</li>
+        <li><strong>Satzanfang:</strong> Bringt den ersten Buchstaben nach einem Punkt automatisch groß.</li>
+        <li><strong>Titel Format:</strong> Schreibt den ersten Buchstaben jedes Wortes groß.</li>
+      </ul>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function updateStats() {
+      const text = document.getElementById('text-input').value;
+      document.getElementById('char-count').textContent = text.length;
+      const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+      document.getElementById('word-count').textContent = words;
+    }
+
+    function convertToUpperCase() {
+      const el = document.getElementById('text-input');
+      el.value = el.value.toUpperCase();
+      updateStats();
+    }
+
+    function convertToLowerCase() {
+      const el = document.getElementById('text-input');
+      el.value = el.value.toLowerCase();
+      updateStats();
+    }
+
+    function convertToSentenceCase() {
+      const el = document.getElementById('text-input');
+      let text = el.value.toLowerCase();
+      // Capitalize first letter of sentences
+      text = text.replace(/(^\s*[\w])|([.!?]\s+[\w])/g, match => match.toUpperCase());
+      el.value = text;
+      updateStats();
+    }
+
+    function convertToTitleCase() {
+      const el = document.getElementById('text-input');
+      let text = el.value.toLowerCase();
+      text = text.replace(/(^|\s)\S/g, l => l.toUpperCase());
+      el.value = text;
+      updateStats();
+    }
+
+    function copyText() {
+      const el = document.getElementById('text-input');
+      el.select();
+      navigator.clipboard.writeText(el.value).then(() => {
+        alert('Text in die Zwischenablage kopiert!');
+      });
+    }
+  </script>
+
+</body>
+</html>
