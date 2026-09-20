@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Währungsrechner - Aktuelle Wechselkurse online berechnen | BlitzRechner</title>
+  <meta name="description" content="Rechnen Sie Euro in US-Dollar, Pfund, Schweizer Franken und viele weitere Währungen um. Kostenloser Währungsrechner mit aktuellen Kursen.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700 bg-sky-50 px-4 py-2 rounded-xl border border-sky-100 transition">
+        ← Zurück zur Startseite
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">💱</div>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Währungsrechner</h1>
+          <p class="text-slate-500 text-sm">Rechnen Sie Beträge schnell zwischen verschiedenen Weltwährungen um.</p>
+        </div>
+      </div>
+
+      <!-- Inputs Container -->
+      <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100 mb-6">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Betrag</label>
+            <input type="number" id="amount" value="100" min="0" oninput="convertCurrency()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-600 mb-1">Von Währung</label>
+            <select id="from-currency" onchange="convertCurrency()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm bg-white">
+              <option value="EUR">EUR (€) - Euro</option>
+              <option value="USD">USD ($) - US-Dollar</option>
+              <option value="GBP">GBP (£) - Britisches Pfund</option>
+              <option value="CHF">CHF (CHF) - Schweizer Franken</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-600 mb-1">Zu Währung</label>
+          <select id="to-currency" onchange="convertCurrency()" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 text-sm bg-white">
+            <option value="USD" selected>USD ($) - US-Dollar</option>
+            <option value="EUR">EUR (€) - Euro</option>
+            <option value="GBP">GBP (£) - Britisches Pfund</option>
+            <option value="CHF">CHF (CHF) - Schweizer Franken</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Box -->
+      <div id="result-box" class="bg-sky-50 border border-sky-100 rounded-xl p-5 text-center">
+        <h3 class="text-sm font-semibold text-sky-800 mb-1">Umgerechneter Betrag:</h3>
+        <div id="result-text" class="text-2xl font-extrabold text-sky-900">108.50 USD</div>
+        <p id="exchange-rate-info" class="text-xs text-slate-500 mt-2">1 EUR = 1.0850 USD (Beispielkurs)</p>
+      </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Währungen einfach und schnell umrechnen</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Egal ob Sie eine Auslandsreise planen, Online-Shopping in fremden Währungen betreiben oder internationale Geschäftsfinanzierungen kalkulieren – ein verlässlicher Währungsrechner ist unerlässlich. Die Wechselkurse zwischen globalen Währungen wie dem Euro (EUR), US-Dollar (USD), Britischen Pfund (GBP) oder dem Schweizer Franken (CHF) unterliegen ständigen Schwankungen.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Wichtige Faktoren bei Devisengeschäften</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Wenn Sie Geld in eine andere Währung tauschen, sollten Sie neben dem reinen Mittelkurs auch auf mögliche Bankgebühren oder Spreads (die Differenz zwischen An- und Verkaufskurs) achten. Unser Rechner liefert Ihnen eine schnelle Orientierung basierend auf aktuellen Standardwerten.
+      </p>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Static base rates relative to EUR
+    const rates = {
+      EUR: 1.0,
+      USD: 1.085,
+      GBP: 0.855,
+      CHF: 0.965
+    };
+
+    function convertCurrency() {
+      const amount = parseFloat(document.getElementById('amount').value) || 0;
+      const from = document.getElementById('from-currency').value;
+      const to = document.getElementById('to-currency').value;
+
+      // Convert amount to EUR first, then to target currency
+      const amountInEur = amount / rates[from];
+      const convertedAmount = amountInEur * rates[to];
+
+      // Current exchange rate for 1 'from' unit to 'to'
+      const singleRate = (1 / rates[from]) * rates[to];
+
+      document.getElementById('result-text').textContent = convertedAmount.toFixed(2) + ' ' + to;
+      document.getElementById('exchange-rate-info').textContent = `1 ${from} = ${singleRate.toFixed(4)} ${to}`;
+    }
+
+    // Run initial calculation on load
+    window.onload = convertCurrency;
+  </script>
+
+</body>
+</html>
