@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stromkostenrechner - Stromverbrauch & Energiekosten berechnen | BlitzRechner</title>
+  <meta name="description" content="Berechnen Sie schnell und einfach Ihren Stromverbrauch pro Tag, Monat und Jahr sowie die anfallenden Stromkosten mit unserem kostenlosen Online-Rechner.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center font-black text-xl shadow-md">
+          ⚡
+        </div>
+        <span class="text-2xl font-extrabold text-slate-900 tracking-tight">Blitz<span class="text-sky-600">Rechner</span></span>
+      </a>
+      <a href="../index.html" class="text-xs font-semibold bg-slate-100 text-slate-700 px-4 py-2 rounded-xl hover:bg-slate-200 transition">
+        &larr; Zurück zur Übersicht
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+    
+    <!-- Title Section -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+        Stromkosten<span class="text-sky-600">rechner</span>
+      </h1>
+      <p class="text-sm sm:text-base text-slate-500">
+        Ermitteln Sie im Handumdrehen den Stromverbrauch und die Kosten Ihrer elektrischen Geräte.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm">
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Input Fields -->
+        <div class="space-y-6">
+          
+          <!-- Leistung (Watt) -->
+          <div>
+            <label for="watt" class="block text-sm font-bold text-slate-700 mb-2">Leistung des Geräts (in Watt)</label>
+            <div class="relative">
+              <input type="number" id="watt" value="1500" min="0" step="any"
+                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition font-semibold text-slate-900 text-lg">
+              <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400 font-semibold">W</div>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">z. B. Föhn: 1500W, Kühlschrank: 150W</p>
+          </div>
+
+          <!-- Nutzungsdauer -->
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">Nutzungsdauer</label>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <input type="number" id="hours" value="1" min="0" step="any"
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition font-semibold text-slate-900">
+                <span class="text-xs text-slate-500 mt-1 block">Stunden pro Tag</span>
+              </div>
+              <div>
+                <input type="number" id="days" value="365" min="0" max="365" step="1"
+                  class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition font-semibold text-slate-900">
+                <span class="text-xs text-slate-500 mt-1 block">Tage pro Jahr</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strompreis -->
+          <div>
+            <label for="price" class="block text-sm font-bold text-slate-700 mb-2">Strompreis</label>
+            <div class="relative">
+              <input type="number" id="price" value="0.35" min="0" step="0.01"
+                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition font-semibold text-slate-900 text-lg">
+              <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400 font-semibold">€ / kWh</div>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Durchschnittlicher Preis in Deutschland ca. 0.35 €</p>
+          </div>
+
+        </div>
+
+        <!-- Results Section -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <h2 class="text-base font-bold text-slate-900 mb-6 border-b border-slate-200 pb-3">Berechnungsergebnis</h2>
+            
+            <div class="space-y-4">
+              <!-- kWh pro Jahr -->
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-600 font-medium">Verbrauch (Jahr):</span>
+                <span id="res-kwh" class="text-base font-bold text-slate-900">0,00 kWh</span>
+              </div>
+
+              <!-- Kosten Tag -->
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-600 font-medium">Kosten pro Tag:</span>
+                <span id="res-day" class="text-base font-bold text-slate-900">0,00 €</span>
+              </div>
+
+              <!-- Kosten Monat -->
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-slate-600 font-medium">Kosten pro Monat:</span>
+                <span id="res-month" class="text-base font-bold text-slate-900">0,00 €</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kosten Jahr (Highlight) -->
+          <div class="mt-8 pt-4 border-t border-slate-200">
+            <span class="text-xs font-bold text-sky-600 uppercase tracking-wider block mb-1">Stromkosten pro Jahr</span>
+            <div id="res-year" class="text-3xl font-extrabold text-slate-900">0,00 €</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEO Informational Text Section -->
+    <div class="mt-12 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4 text-slate-600 text-sm leading-relaxed">
+      <h2 class="text-lg font-bold text-slate-900">Wie wird der Stromverbrauch berechnet?</h2>
+      <p>
+        Der Stromverbrauch eines Haushaltsgeräts hängt im Wesentlichen von drei Faktoren ab: der elektrischen Leistung (in Watt), der täglichen Einschaltdauer und dem aktuellen Strompreis Ihres Energieversorgers.
+      </p>
+      <p>
+        Die Formel lautet: <br>
+        <code class="bg-slate-100 text-slate-900 px-2 py-1 rounded font-mono text-xs block my-2 w-fit">Verbrauch (kWh) = (Watt × Stunden pro Tag × Tage) / 1000</code>
+      </p>
+      <p>
+        Durch die Multiplikation des Jahresverbrauchs in Kilowattstunden (kWh) mit Ihrem Strompreis pro kWh erhalten Sie die jährlichen Energiekosten. So lassen sich Stromfresser im Haushalt schnell entlarven und gezielt Einsparpotenziale nutzen.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex justify-center flex-wrap gap-6 font-medium text-sm">
+        <a href="../impressum.html" class="hover:text-white transition">Impressum</a>
+        <a href="../datenschutz.html" class="hover:text-white transition">Datenschutz</a>
+        <a href="../nutzungsbedingungen.html" class="hover:text-white transition">Nutzungsbedingungen</a>
+        <a href="../kontakt.html" class="hover:text-white transition">Kontakt</a>
+      </div>
+      <p>&copy; 2026 BlitzRechner. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Live Calculation -->
+  <script>
+    const wattInput = document.getElementById('watt');
+    const hoursInput = document.getElementById('hours');
+    const daysInput = document.getElementById('days');
+    const priceInput = document.getElementById('price');
+
+    const resKwh = document.getElementById('res-kwh');
+    const resDay = document.getElementById('res-day');
+    const resMonth = document.getElementById('res-month');
+    const resYear = document.getElementById('res-year');
+
+    function calculate() {
+      const watt = parseFloat(wattInput.value) || 0;
+      const hours = parseFloat(hoursInput.value) || 0;
+      const days = parseFloat(daysInput.value) || 0;
+      const price = parseFloat(priceInput.value) || 0;
+
+      // Calculations
+      const kwhPerDay = (watt * hours) / 1000;
+      const kwhPerYear = kwhPerDay * days;
+      const costPerDay = kwhPerDay * price;
+      const costPerMonth = (kwhPerYear / 12) * price;
+      const costPerYear = kwhPerYear * price;
+
+      // Format German currency & numbers
+      const formatCurr = (val) => val.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+      const formatNum = (val) => val.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' kWh';
+
+      resKwh.textContent = formatNum(kwhPerYear);
+      resDay.textContent = formatCurr(costPerDay);
+      resMonth.textContent = formatCurr(costPerMonth);
+      resYear.textContent = formatCurr(costPerYear);
+    }
+
+    // Event Listeners for real-time calculation
+    [wattInput, hoursInput, daysInput, priceInput].forEach(input => {
+      input.addEventListener('input', calculate);
+    });
+
+    // Run on initial load
+    calculate();
+  </script>
+
+</body>
+</html>
