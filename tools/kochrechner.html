@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koch- & Zutatenrechner - BlitzRechner</title>
-  <meta name="description" content="Berechnen Sie Zutatenmengen für verschiedene Portionsgrößen schnell und einfach.">
+  <title>Koch- & Zutatenrechner - Portionsgrößen anpassen | BlitzRechner</title>
+  <meta name="description" content="Berechnen Sie Zutatenmengen für verschiedene Portionsgrößen schnell und einfach. Kostenloser Kochrechner für Rezepte, Backen und Haushalt.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,8 +32,9 @@
 
   <!-- Main Content -->
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
-    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-      
+    
+    <!-- Calculator Card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-12">
       <div class="flex items-center gap-4 mb-6">
         <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold">🍳</div>
         <div>
@@ -72,8 +73,35 @@
           Noch keine Zutaten hinzugefügt.
         </div>
       </div>
-
     </div>
+
+    <!-- SEO Content Section -->
+    <article class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm prose prose-slate max-w-none">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">Wie funktioniert der Koch- & Zutatenrechner?</h2>
+      <p class="text-slate-600 text-sm leading-relaxed mb-4">
+        Egal ob Sie für eine grosse Party kochen oder einfach nur ein Rezept für eine Person skalieren möchten – unser digitaler Kochrechner hilft Ihnen dabei, die Mengenangaben von Lebensmitteln und Zutaten sekundenschnell und exakt anzupassen. Sie müssen nie wieder umständlich im Kopf Bruchteile ausrechnen.
+      </p>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Vorteile bei der Rezept-Skalierung</h3>
+      <ul class="list-disc pl-5 text-slate-600 text-sm space-y-2 mb-6">
+        <li><strong>Präzise Berechnung:</strong> Vermeiden Sie Rechenfehler bei der Umrechnung von Gramm-, Milliliter- oder Stückangaben.</li>
+        <li><strong>Flexibilität:</strong> Beliebig viele Zutaten gleichzeitig hinzufügen und anpassen.</li>
+        <li><strong>Zeitsparend:</strong> Ideal für Kochanfänger und professionelle Hobbyköche gleichermassen.</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-3">Häufig gestellte Fragen (FAQ)</h3>
+      <div class="space-y-4 text-sm">
+        <div>
+          <h4 class="font-semibold text-slate-900">Kann man auch Flüssigkeiten und Stückzahlen umrechnen?</h4>
+          <p class="text-slate-600">Ja, Sie können beliebige Einheiten wie Gramm (g), Milliliter (ml), Teelöffel (TL) oder Stück eingeben.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-900">Wie wird der Faktor berechnet?</h4>
+          <p class="text-slate-600">Der Rechner ermittelt das Verhältnis aus gewünschten Portionen geteilt durch die ursprünglichen Portionen und multipliziert jede Zutat automatisch damit.</p>
+        </div>
+      </div>
+    </article>
+
   </main>
 
   <!-- Footer -->
