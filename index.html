@@ -36,8 +36,12 @@
       <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
         Kostenlose Rechner für <span class="text-sky-600">jeden Zweck</span>
       </h1>
-      <p class="text-base sm:text-lg text-slate-500">
+      <p class="text-base sm:text-lg text-slate-500 mb-6">
         Präzise, schnelle und benutzerfreundliche Online-Tools für Finanzen, Steuern, Alltag, Gesundheit, Mathematik und mehr.
+      </p>
+      <!-- SEO Introduction Paragraph -->
+      <p class="text-sm text-slate-600 leading-relaxed bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm">
+        Willkommen bei BlitzRechner – Ihrer zentralen Plattform für kostenlose Online-Rechner und praktische Alltagswerkzeuge. Ob Finanzberechnungen, Prozentrechner, mathematische Formeln oder Text-Formatierungen: Unsere Tools arbeiten schnell, präzise und direkt in Ihrem Browser. Sparen Sie wertvolle Zeit bei Ihren täglichen Aufgaben, ganz ohne Registrierung oder Installation. Entdecken Sie jetzt über 30 smarte Rechner für Beruf, Schule und Freizeit.
       </p>
     </div>
 
@@ -51,12 +55,12 @@
       <button data-filter="sicherheit" class="filter-btn px-4 py-2 rounded-full text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition">Sicherheit & Tools</button>
     </div>
 
-    <!-- Tools Grid (30 Tools with Data Categories) -->
+    <!-- Tools Grid (30 Tools with Uniform Cards & Categories) -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="tools-grid">
       
       <!-- 1. MwSt -->
       <a href="tools/mwst-rechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💶</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💶</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Steuern</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Mehrwertsteuer Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Brutto, Netto und MwSt sekundenschnell berechnen.</p>
@@ -64,7 +68,7 @@
 
       <!-- 2. Brutto Netto -->
       <a href="tools/brutto-netto-rechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💼</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💼</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Gehalt</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Brutto Netto Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Nettogehalt, Steuern und Abzüge ermitteln.</p>
@@ -72,7 +76,7 @@
 
       <!-- 3. Prozent -->
       <a href="tools/prozentrechner.html" data-category="mathematik" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📊</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📊</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Mathematik</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Prozentrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Prozentwerte, Aufschläge und Anteile berechnen.</p>
@@ -80,7 +84,7 @@
 
       <!-- 4. Rabatt -->
       <a href="tools/rabatt-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🛒</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🛒</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Shopping & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Rabattrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Reduzierten Preis und Ersparnis berechnen.</p>
@@ -88,7 +92,7 @@
 
       <!-- 5. Skonto -->
       <a href="tools/skonto-rechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🏷️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🏷️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Handel</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Skonto Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Skontobetrag und Zahlungsbetrag ermitteln.</p>
@@ -96,7 +100,7 @@
 
       <!-- 6. Zinseszins -->
       <a href="tools/zinseszins-rechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📈</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📈</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Geldanlage</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Zinseszinsrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Kapitalwachstum über Jahre berechnen.</p>
@@ -104,7 +108,7 @@
 
       <!-- 7. BMI -->
       <a href="tools/bmi-rechner.html" data-category="gesundheit" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⚖️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⚖️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Gesundheit & Fitness</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">BMI Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Body-Mass-Index und Körpergewicht bewerten.</p>
@@ -112,7 +116,7 @@
 
       <!-- 8. Kalorien -->
       <a href="tools/kalorienbedarf-rechner.html" data-category="gesundheit" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🍎</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🍎</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Gesundheit & Ernährung</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Kalorienbedarf Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Grundumsatz und täglichen Bedarf ermitteln.</p>
@@ -120,7 +124,7 @@
 
       <!-- 9. Sprit -->
       <a href="tools/verbrauch-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🚗</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🚗</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Auto & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Spritverbrauch Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Durchschnittsverbrauch und Benzinkosten berechnen.</p>
@@ -128,7 +132,7 @@
 
       <!-- 10. Wörter -->
       <a href="tools/woerter-zaehlen.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📝</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📝</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Text & Schreiben</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Wörter Zählen</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Wörter, Zeichen und Sätze in Echtzeit analysieren.</p>
@@ -136,7 +140,7 @@
 
       <!-- 11. Passwort Gen -->
       <a href="tools/passwort-generator.html" data-category="sicherheit" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔒</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔒</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Sicherheit & Tools</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Passwort Generator</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Sichere, unknackbare Passwörter nach Maß erstellen.</p>
@@ -144,7 +148,7 @@
 
       <!-- 12. Kredit -->
       <a href="tools/kreditrechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🏦</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🏦</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Kredite</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Kreditrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Monatliche Rate und Gesamtkosten berechnen.</p>
@@ -152,7 +156,7 @@
 
       <!-- 13. Trinkgeld -->
       <a href="tools/trinkgeld-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💸</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💸</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Alltag & Gastronomie</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Trinkgeld Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Trinkgeld und Gesamtsumme schnell aufteilen.</p>
@@ -160,7 +164,7 @@
 
       <!-- 14. Gehalt -->
       <a href="tools/gehaltsrechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💼</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💼</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Arbeit</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Gehaltsrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Jahresgehalt, Monatsgehalt und Stundelohn.</p>
@@ -168,7 +172,7 @@
 
       <!-- 15. Alter -->
       <a href="tools/alter-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🎂</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🎂</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Alltag & Zeit</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Altersrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Genaues Alter in Jahren, Monaten und Tagen.</p>
@@ -176,7 +180,7 @@
 
       <!-- 16. Taschenrechner -->
       <a href="tools/taschenrechner.html" data-category="mathematik" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔢</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔢</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Mathematik</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Online Taschenrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Grundrechenarten und erweiterte Funktionen.</p>
@@ -184,7 +188,7 @@
 
       <!-- 17. Einheiten -->
       <a href="tools/einheiten-rechner.html" data-category="mathematik" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📐</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📐</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Wissenschaft & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Einheitenumrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Längen, Gewichte, Flächen und Volumen umrechnen.</p>
@@ -192,7 +196,7 @@
 
       <!-- 18. Währung -->
       <a href="tools/waehrungsrechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💱</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💱</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Reisen</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Währungsrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Aktuelle Kurse für USD, EUR, GBP und mehr.</p>
@@ -200,7 +204,7 @@
 
       <!-- 19. Stromkosten -->
       <a href="tools/stromkosten-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⚡</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⚡</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Haushalt & Energie</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Stromkostenrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Stromverbrauch und Energiekosten ermitteln.</p>
@@ -208,7 +212,7 @@
 
       <!-- 20. Wasser -->
       <a href="tools/wasserverbrauch-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💧</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">💧</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Haushalt & Umwelt</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Wasserverbrauch Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Täglichen Wasserbedarf und Kosten berechnen.</p>
@@ -216,7 +220,7 @@
 
       <!-- 21. Kochrechner -->
       <a href="tools/kochrechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🍳</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🍳</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Küche & Haushalt</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Koch- & Zutatenrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Zutatenmengen für verschiedene Portionsgrößen.</p>
@@ -224,7 +228,7 @@
 
       <!-- 22. Noten -->
       <a href="tools/notenrechner.html" data-category="mathematik" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🎓</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🎓</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Schule & Studium</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Notenrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Durchschnittsnoten und Klausurergebnisse ermitteln.</p>
@@ -232,7 +236,7 @@
 
       <!-- 23. Passwortstärke -->
       <a href="tools/passwort-staerke.html" data-category="sicherheit" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🛡️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🛡️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Sicherheit</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Passwortstärke Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Sicherheit vorhandener Passwörter testen.</p>
@@ -240,7 +244,7 @@
 
       <!-- 24. Zeitzonen -->
       <a href="tools/zeitzonen-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🌍</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🌍</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Weltweit & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Zeitzonen Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Zeitunterschiede zwischen Ländern berechnen.</p>
@@ -248,15 +252,15 @@
 
       <!-- 25. Zeitdifferenz -->
       <a href="tools/zeitdifferenz-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⏳</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⏳</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Zeit & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Zeitdifferenz Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Stunden und Tage zwischen Daten berechnen.</p>
       </a>
 
-      <!-- 26. Text Case (Updated to grob-kleinschreibung.html) -->
+      <!-- 26. Text Case -->
       <a href="tools/grob-kleinschreibung.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔤</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🔤</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Text & Tools</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Groß- / Kleinschreibung</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Text-Formatierungen automatisch umwandeln.</p>
@@ -264,7 +268,7 @@
 
       <!-- 27. Dreisatz -->
       <a href="tools/dreisatz-rechner.html" data-category="mathematik" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">✖️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">✖️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Mathematik</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Dreisatz Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Proportionalen Dreisatz schnell lösen.</p>
@@ -272,7 +276,7 @@
 
       <!-- 28. Inflation -->
       <a href="tools/inflationsrechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📉</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">📉</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Wirtschaft</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Inflationsrechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Kaufkraftverlust über Jahre berechnen.</p>
@@ -280,7 +284,7 @@
 
       <!-- 29. Parkgebühren -->
       <a href="tools/parkgebuehren-rechner.html" data-category="alltag" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🅿️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">🅿️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Auto & Alltag</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Parkgebühren Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Parkkosten nach Parkdauer kalkulieren.</p>
@@ -288,7 +292,7 @@
 
       <!-- 30. Stundenlohn -->
       <a href="tools/stundenlohn-rechner.html" data-category="finanzen" class="tool-card bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-sky-500 transition group">
-        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-2xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⏱️</div>
+        <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl font-bold mb-4 group-hover:bg-sky-600 group-hover:text-white transition">⏱️</div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-wider">Finanzen & Arbeit</span>
         <h2 class="text-lg font-bold text-slate-900 mt-1 mb-2">Stundenlohn Rechner</h2>
         <p class="text-slate-500 text-xs sm:text-sm">Effektiven Stundenlohn bei Arbeitszeit berechnen.</p>
